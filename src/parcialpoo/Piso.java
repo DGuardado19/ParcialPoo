@@ -14,16 +14,7 @@ public class Piso {
     
     public ArrayList<Piso> Piso = new ArrayList<Piso>();
     
-    private int codigo;
     private String Letra;
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
 
     public String getLetra() {
         return Letra;
@@ -33,10 +24,30 @@ public class Piso {
         this.Letra = Letra;
     }
     
-    public void agregarPiso(){
+    public void agregarPiso(String letra){
         Piso piso = new Piso();
-        piso.setLetra("A");
-        piso.setCodigo(1);
+        piso.setLetra(letra);
         Piso.add(piso);
+    }
+    
+    public void modificarPiso(int Npiso, String letra){
+        Piso piso = new Piso();
+        piso.setLetra(letra);
+        Piso.add(Npiso-1, piso);
+        Piso.remove(Npiso);
+    }
+    
+    public void eliminarPiso(int Npiso){
+        Piso.remove(Npiso-1);
+    }
+    
+    public void mostrarPiso(){
+        System.out.println("------------Pisos--------------");
+        int cont = 1;
+        for(Piso recorrer: Piso){
+            System.out.print(cont+" - ");
+            System.out.print(recorrer.getLetra()+"\n");
+            ++cont;
+        }
     }
 }
