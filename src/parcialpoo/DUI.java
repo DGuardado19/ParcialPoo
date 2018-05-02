@@ -19,29 +19,25 @@ public class DUI {
     public DUI() {
     }
 
-    String[] PedirD(int a) {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Ingrese el numero verificador del dui :) :");
-//        int verificador = sc.nextInt();
-//        Scanner a = new Scanner(System.in);
-//        System.out.println("Ingrese los numeros enteros que quiera ingresar separados por una coma ',' , Presione Enter para terminar: ");
-//        String dui =a.nextLine();
-//        String [] du = dui.split(",");
-        int[] arreglo = new int[a];
-
-        for (int i = 0; i < a; i++) {
-            System.out.print("Numero " + String.valueOf(i + 1) + ": ");
-            arreglo[i] = leer.nextInt();
-            
+    public boolean PedirD(String dui, int a) {
+        dui="111111111";
+        int cont=9;
+        int aux, total =0;
+        for (int i=0;i<dui.length()-1;i++){
+        aux= Integer.parseInt(String.valueOf(dui.charAt(i)))*cont;
+        total+=aux;
+            System.out.println(aux);
+            --cont;
+    }
+        aux= Integer.parseInt(String.valueOf(dui.charAt(8)));
+        int b;
+        b= 10-(total%10);
+        System.out.println(b);
+        if(b==aux){
+            System.out.println("El dui es valido, continue con el proceso  de reserva :)");
         }
-
-        System.out.println("");
-
-        for (int i = 0; i < a; i++) {
-            System.out.println("Numero " + String.valueOf(i + 1) + ": " + String.valueOf(arreglo[i]));
-        }
-
-//        return du;
-
+        else
+            System.out.println("Ups, el dui no es valido :(, intenta de nuevo");
+        return true;
     }
 }
