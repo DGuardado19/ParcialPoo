@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author Eduardo Alberto López Torres <Carnet: 00092117>
  */
-public class Piso {
+public class Piso{
     public Piso(){
         
     }
