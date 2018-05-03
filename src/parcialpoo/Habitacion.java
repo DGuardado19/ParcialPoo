@@ -1,4 +1,3 @@
-
 package parcialpoo;
 
 import java.util.ArrayList;
@@ -7,13 +6,14 @@ import java.util.ArrayList;
  *
  * @author Eduardo Alberto López Torres <Carnet: 00092117>
  */
-public class Habitacion extends Piso{
-    public Habitacion(){
-        
+public class Habitacion extends Piso {
+
+    public Habitacion() {
+
     }
-    
+
     public ArrayList<Habitacion> habitacion = new ArrayList<Habitacion>();
-    
+
     double precio;
     String tipo;
     String piso;
@@ -27,7 +27,7 @@ public class Habitacion extends Piso{
     public void setHabit(int habit) {
         this.habit = habit;
     }
-    
+
     public double getPrecio() {
         return precio;
     }
@@ -59,35 +59,41 @@ public class Habitacion extends Piso{
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    public void agregarHabitacion(int Nhabitacion, double precio, String letra, int estado){
+
+    public void agregarHabitacion(int Nhabitacion, double precio, String letra, int estado) {
         Habitacion ha = new Habitacion();
         ha.setPrecio(precio);
-        ha.setPiso(letra); 
-        ha.setHabit(Nhabitacion);
-        ha.setTipo("Hola");
-        switch (estado) {
-            case 1:
-                ha.setEstado("Habilitado");
-                break;
-            case 2:
-                ha.setEstado("Desabilitado");
-                break;
-            case 3:
-                ha.setEstado("Reservado");
-                break;
-            default:
-                break;
+        if (main.pis.verificarPiso(letra)) {
+            ha.setPiso(letra);
+            ha.setHabit(Nhabitacion);
+            if(Nhabitacion%2 == 0){
+                ha.setTipo("Hola");
+            }
+            switch (estado) {
+                case 1:
+                    ha.setEstado("Habilitado");
+                    break;
+                case 2:
+                    ha.setEstado("Desabilitado");
+                    break;
+                case 3:
+                    ha.setEstado("Reservado");
+                    break;
+                default:
+                    break;
+            }
+            habitacion.add(ha);
+        } else {
+            System.err.println("El piso seleccionado no existe!");
         }
-        habitacion.add(ha);
     }
-    
-    public void mostrarHabitaciones(){
-        for(Habitacion recorrer: habitacion){
-            System.out.println("Habitacion: "+recorrer.getHabit());
-            System.out.println("Piso: "+recorrer.getPiso());
-            System.out.println("Precio por noche: "+recorrer.getPrecio());
-            System.out.println("Estado: "+recorrer.getEstado());
+
+    public void mostrarHabitaciones() {
+        for (Habitacion recorrer : habitacion) {
+            System.out.println("Habitacion: " + recorrer.getHabit());
+            System.out.println("Piso: " + recorrer.getPiso());
+            System.out.println("Precio por noche: " + recorrer.getPrecio());
+            System.out.println("Estado: " + recorrer.getEstado());
         }
     }
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package parcialpoo;
+
 /**
  *
  * @author DGuardado <david.guardado at guardado.org>
@@ -13,12 +14,17 @@ public class main {
     /**
      * @param args the command line arguments
      */
-    
     public static Habitacion habi = new Habitacion();
     public static Piso pis = new Piso();
-    
+
     public static void main(String[] args) {
-       
+        pis.agregarPiso("A");
+        pis.agregarPiso("B");
+        pis.agregarPiso("C");
+        pis.agregarPiso("D");
+        pis.agregarPiso("E");
+        
+        habi.agregarHabitacion(1, 24, "A", 1);
     }
-    
+
 }

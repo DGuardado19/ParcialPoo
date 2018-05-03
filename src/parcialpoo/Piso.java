@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author Eduardo Alberto López Torres <Carnet: 00092117>
  */
 public class Piso{
+    
     public Piso(){
         
     }
@@ -15,6 +16,15 @@ public class Piso{
     public ArrayList<Piso> Piso = new ArrayList<Piso>();
     
     private String Letra;
+    private String estado;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
     public String getLetra() {
         return Letra;
@@ -26,13 +36,27 @@ public class Piso{
     
     public void agregarPiso(String letra){
         Piso piso = new Piso();
+        piso.setEstado("Habilitado");
         piso.setLetra(letra);
         Piso.add(piso);
     }
     
-    public void modificarPiso(int Npiso, String letra){
+    public void modificarPisoLetra(int Npiso, String letra){
         Piso piso = new Piso();
         piso.setLetra(letra);
+        piso.setEstado(Piso.get(Npiso-1).getEstado());
+        Piso.add(Npiso-1, piso);
+        Piso.remove(Npiso);
+    }
+    
+    public void modificarPisoEstado(int Npiso, int Estado){
+        Piso piso = new Piso();
+        piso.setLetra(Piso.get(Npiso-1).getLetra());
+        if(Estado == 1){
+            piso.setEstado("Habilitada");
+        }else if(Estado == 2){
+            piso.setEstado("Desabilitada");
+        }
         Piso.add(Npiso-1, piso);
         Piso.remove(Npiso);
     }
@@ -49,5 +73,15 @@ public class Piso{
             System.out.print(recorrer.getLetra()+"\n");
             ++cont;
         }
+    }
+    
+    public boolean verificarPiso(String letra){
+        boolean bandera = false;
+        for(Piso recorrer: Piso){
+            if(recorrer.getLetra().equals(letra)){
+                bandera = true;
+            }
+        }
+        return bandera;
     }
 }
