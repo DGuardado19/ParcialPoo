@@ -13,20 +13,17 @@ import java.util.Scanner;
  */
 public class main {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    public void iniciar(){
         int opc;
         Scanner leer = new Scanner(System.in);
-        System.out.print("---------BIENVENIDO-----------");
-        System.out.print("----Hotel Vina Raphiña--------");
-        System.out.print("1. tal ");
-        System.out.print("2. tal ");
-        System.out.print("3. tal ");
-        System.out.print("4. tal ");
-        System.out.print("5. tal ");
-        System.out.print("Opcion hotel, que desea hacer? (provicional)");
+        System.out.print("---------BIENVENIDO-----------\n");
+        System.out.print("----Hotel Vina Raphiña--------\n");
+        System.out.print("1. tal \n");
+        System.out.print("2. tal \n");
+        System.out.print("3. tal \n");
+        System.out.print("4. tal \n");
+        System.out.print("5. tal \n");
+        System.out.print("Opcion hotel, que desea hacer? (provicional)\n");
         opc = leer.nextInt();
         System.out.println("");
         switch (opc) {
