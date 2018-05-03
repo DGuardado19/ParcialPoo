@@ -60,4 +60,13 @@ public class Menu {
 
         }
     }
+    public void menuPaquete(){
+        System.out.println("--- MENU DE PAQUETES ---");
+        System.out.println("1.Agregar nuevo paquete");
+        System.out.println("2.Mostrar paquetes");
+        System.out.println("3.Numero de acceso que tienen los paquetes");
+        System.out.println("4.Eliminar todos los paquetes");
+        System.out.println("5.Agregar un nuevo acceso a un paquete");
+        System.out.println("6.Posicion en la que esta un acceso del paquete");
+    }
 }
