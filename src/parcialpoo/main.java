@@ -11,8 +11,12 @@ import java.util.Scanner;
  *
  * @author DGuardado <david.guardado at guardado.org>
  */
-public class main {
 
+public class main {
+    
+    public static Habitacion habi = new Habitacion();
+    public static Piso pis = new Piso();
+    
     public void iniciar(){
         int opc;
         Scanner leer = new Scanner(System.in);

@@ -18,7 +18,16 @@ public class Habitacion extends Piso{
     String tipo;
     String piso;
     String estado;
+    int habit;
 
+    public int getHabit() {
+        return habit;
+    }
+
+    public void setHabit(int habit) {
+        this.habit = habit;
+    }
+    
     public double getPrecio() {
         return precio;
     }
@@ -54,11 +63,31 @@ public class Habitacion extends Piso{
     public void agregarHabitacion(int Nhabitacion, double precio, String letra, int estado){
         Habitacion ha = new Habitacion();
         ha.setPrecio(precio);
-        ha.setLetra(letra); 
-        if(estado == 0){
-            ha.setEstado("Habilitado");
-        }else if(estado == 1){
-            ha.setEstado("Desabilitado");
+        ha.setPiso(letra); 
+        ha.setHabit(Nhabitacion);
+        ha.setTipo("Hola");
+        switch (estado) {
+            case 1:
+                ha.setEstado("Habilitado");
+                break;
+            case 2:
+                ha.setEstado("Desabilitado");
+                break;
+            case 3:
+                ha.setEstado("Reservado");
+                break;
+            default:
+                break;
+        }
+        habitacion.add(ha);
+    }
+    
+    public void mostrarHabitaciones(){
+        for(Habitacion recorrer: habitacion){
+            System.out.println("Habitacion: "+recorrer.getHabit());
+            System.out.println("Piso: "+recorrer.getPiso());
+            System.out.println("Precio por noche: "+recorrer.getPrecio());
+            System.out.println("Estado: "+recorrer.getEstado());
         }
     }
 }
