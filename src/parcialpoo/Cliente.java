@@ -10,5 +10,5 @@ package parcialpoo;
  * @author DGuardado <david.guardado at guardado.org>
  */
 public class Cliente {
-    private nombre;
+    private String nombre;
 }
