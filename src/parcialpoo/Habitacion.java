@@ -67,7 +67,9 @@ public class Habitacion extends Piso {
             ha.setPiso(letra);
             ha.setHabit(Nhabitacion);
             if(Nhabitacion%2 == 0){
-                ha.setTipo("Hola");
+                ha.setTipo("Doble");
+            }else{
+                ha.setTipo("Sencilla");
             }
             switch (estado) {
                 case 1:
@@ -87,13 +89,28 @@ public class Habitacion extends Piso {
             System.err.println("El piso seleccionado no existe!");
         }
     }
+    
+    public void eliminarHabitacion(int nHabi){
+        habitacion.remove(nHabi-1);
+    }
 
     public void mostrarHabitaciones() {
         for (Habitacion recorrer : habitacion) {
             System.out.println("Habitacion: " + recorrer.getHabit());
             System.out.println("Piso: " + recorrer.getPiso());
             System.out.println("Precio por noche: " + recorrer.getPrecio());
+            System.out.println("Tipo: " + recorrer.getTipo());
             System.out.println("Estado: " + recorrer.getEstado());
         }
+    }
+    
+    public int verificarExistenciaHabitacionesEnPiso(String letra){
+        int cont = 0;
+        for (Habitacion recorrer : habitacion) {
+            if(recorrer.getPiso().equals(letra)){
+                ++cont;
+            }
+        }
+        return cont;
     }
 }
