@@ -2,6 +2,7 @@
 package parcialpoo;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -62,7 +63,21 @@ public class Piso{
     }
     
     public void eliminarPiso(int Npiso){
-        Piso.remove(Npiso-1);
+        String respuesta;
+        int nh = main.habi.verificarExistenciaHabitacionesEnPiso(Piso.get(Npiso-1).getLetra());
+        Scanner leer = new Scanner(System.in);
+        System.out.print("Desea eliminar "+nh+" habitaciones?(s/n): ");
+        respuesta = leer.next();
+        if(respuesta == "s"){
+            Piso.remove(Npiso-1);
+            for(Piso recorrer: Piso){
+                if(recorrer.getLetra().equals(Piso.get(Npiso-1).getLetra())){
+                    main.habi.eliminarHabitacion(nh);
+                }
+            }
+        }else{
+            System.err.println("CANCELADO!!!");
+        }
     }
     
     public void mostrarPiso(){
