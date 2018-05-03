@@ -26,10 +26,12 @@ public class main {
         
         habi.agregarHabitacion(2, 30, "A", 1);
         habi.agregarHabitacion(1, 24, "A", 1);
-        habi.agregarHabitacion(4, 50, "A", 2);
-        habi.agregarHabitacion(4, 50, "B", 2);
+        habi.agregarHabitacion(4, 50, "A", 1);
+        habi.agregarHabitacion(4, 50, "B", 1);
         
-        pis.eliminarPiso(1);
+        //pis.eliminarPiso(1);
+        
+        habi.eliminarHabitacion("A", 1);
         
         habi.mostrarHabitaciones();
     }

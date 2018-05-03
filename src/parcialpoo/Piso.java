@@ -50,10 +50,6 @@ public class Piso{
         Piso.remove(Npiso);
     }
     
-    public void modificarPisoEstado(int Npiso, String letra){
-        
-    }
-    
     public void modificarPisoEstado(int Npiso, int Estado){
         Piso piso = new Piso();
         piso.setLetra(Piso.get(Npiso-1).getLetra());

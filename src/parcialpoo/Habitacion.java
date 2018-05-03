@@ -90,30 +90,75 @@ public class Habitacion {
         }
     }
 
+    public void modificarHabitacionEstado(String piso, int numero) {
+        boolean verificar = false;
+        Habitacion h = new Habitacion();
+        int cont = 0, aux = 0;
+        for (Habitacion recorrer : habitacion) {
+            if (recorrer.getPiso().equals(piso)) {
+                if (recorrer.getHabit() == numero) {
+                    verificar = true;
+                    aux = cont;
+                }
+            }
+            ++cont;
+        }
+        if (verificar == true) {
+            h.setHabit(habitacion.get(aux).getHabit());
+            h.setPiso(habitacion.get(aux).getPiso());
+            h.setPiso(habitacion.get(aux).getPiso());
+            h.setPiso(habitacion.get(aux).getPiso());
+            habitacion.remove(aux);
+        } else {
+            System.err.println("La habitacion no existe!!!!");
+        }
+    }
+
     public void eliminarHabitacionDePiso(String lPiso) {
         int cont = 0, cont2 = 0;
         int nh = main.habi.verificarExistenciaHabitacionesEnPiso(lPiso);
         int[] arreglo = new int[nh];
         for (Habitacion recorrer : habitacion) {
             if (recorrer.getPiso().equals(lPiso)) {
-                System.out.println(cont-cont2);
-                arreglo[cont2] = cont-cont2;
+                System.out.println(cont - cont2);
+                arreglo[cont2] = cont - cont2;
                 ++cont2;
             }
             ++cont;
         }
-        for(int i = 0;i < nh;++i){
+        for (int i = 0; i < nh; ++i) {
             habitacion.remove(arreglo[i]);
+        }
+    }
+
+    public void eliminarHabitacion(String piso, int numero) {
+        boolean verificar = false;
+        int cont = 0, aux = 0;
+        for (Habitacion recorrer : habitacion) {
+            if (recorrer.getPiso().equals(piso)) {
+                if (recorrer.getHabit() == numero) {
+                    verificar = true;
+                    aux = cont;
+                }
+            }
+            ++cont;
+        }
+        if (verificar == true) {
+            habitacion.remove(aux);
+        } else {
+            System.err.println("La habitacion no existe!!!!");
         }
     }
 
     public void mostrarHabitaciones() {
         for (Habitacion recorrer : habitacion) {
-            System.out.println("Habitacion: " + recorrer.getHabit());
-            System.out.println("Piso: " + recorrer.getPiso());
-            System.out.println("Precio por noche: " + recorrer.getPrecio());
-            System.out.println("Tipo: " + recorrer.getTipo());
-            System.out.println("Estado: " + recorrer.getEstado());
+            if (recorrer.getEstado().equals("Habilitado")) {
+                System.out.println("Habitacion: " + recorrer.getHabit());
+                System.out.println("Piso: " + recorrer.getPiso());
+                System.out.println("Precio por noche: " + recorrer.getPrecio());
+                System.out.println("Tipo: " + recorrer.getTipo());
+                System.out.println("Estado: " + recorrer.getEstado());
+            }
         }
     }
 
