@@ -5,16 +5,17 @@
  */
 package parcialpoo;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  *
  * @author DGuardado <david.guardado at guardado.org>
  */
-
 public class Menu {
-    
-    public void iniciar(){
+
+    public void iniciar() {
         int opc;
         Scanner leer = new Scanner(System.in);
         System.out.print("---------BIENVENIDO-----------\n");
@@ -57,6 +58,67 @@ public class Menu {
                 break;
             default:
                 break;
+
+        }
+    }
+
+    public void menuPaquete() {
+        System.out.println("----- MENU DE PAQUETES -----");
+        System.out.println("1.Agregar nuevo paquete");
+        System.out.println("2.Mostrar paquetes");
+        System.out.println("3.Numero de acceso que tienen los paquetes");
+        System.out.println("4.Eliminar todos los paquetes");
+        System.out.println("5.Agregar un nuevo acceso a un paquete");
+        System.out.println("6.Posicion en la que esta un acceso del paquete");
+    }
+
+    public void iniciarPaquete() {
+        int opcion = 7;
+        Scanner input = new Scanner(System.in);
+        Paquetes op = new Paquetes();
+        while (opcion != 6) {
+            menuPaquete();
+            try {
+                opcion = input.nextInt();
+                switch (opcion) {
+                    case 1:
+                        op.agregar(op);
+                        break;
+                    case 2:
+                        op.mostrar();
+                        break;
+                    case 3:
+                        op.size();
+                        break;
+                    case 4:
+                        op.clear();
+                        break;
+                    case 5:
+                        Scanner entra = new Scanner(System.in);
+                        int opr;
+                        String acc;
+                        System.out.println("Ingrese la posicion donde agregara el acceso: ");
+                        opr = entra.nextInt();
+                        System.out.println("Ingrese el acceso nuevo: ");
+                        acc = entra.nextLine();
+                        op.add(opr, acc);
+                        break;
+                    case 6:
+                        Scanner ent = new Scanner(System.in);
+                        int te;
+                        System.out.println("Ingrese la posicion del acceso al paquete: ");
+                        te = ent.nextInt();
+                        op.get(te);
+                        break;
+                    default:
+                        System.out.println("INGRESE UN NUMERO");
+                        break;
+
+                }
+            } catch (InputMismatchException hola) {
+                System.err.println("INGRESE UN NUMERO, NO UN CARACTER, TONTO");
+                input.nextLine();
+            }
 
         }
     }
