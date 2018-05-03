@@ -30,6 +30,8 @@ public class main {
         habi.agregarHabitacion(4, 50, "B", 2);
         
         pis.eliminarPiso(1);
+        
+        habi.mostrarHabitaciones();
     }
 
 }

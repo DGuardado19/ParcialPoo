@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Piso{
     
     public Piso(){
-        
+        Piso = new ArrayList<>();
     }
     
     public ArrayList<Piso> Piso = new ArrayList<Piso>();
@@ -50,6 +50,10 @@ public class Piso{
         Piso.remove(Npiso);
     }
     
+    public void modificarPisoEstado(int Npiso, String letra){
+        
+    }
+    
     public void modificarPisoEstado(int Npiso, int Estado){
         Piso piso = new Piso();
         piso.setLetra(Piso.get(Npiso-1).getLetra());
@@ -68,13 +72,9 @@ public class Piso{
         Scanner leer = new Scanner(System.in);
         System.out.print("Desea eliminar "+nh+" habitaciones?(s/n): ");
         respuesta = leer.next();
-        if(respuesta == "s"){
+        if("s".equals(respuesta)){
+            main.habi.eliminarHabitacionDePiso(Piso.get(Npiso-1).getLetra());
             Piso.remove(Npiso-1);
-            for(Piso recorrer: Piso){
-                if(recorrer.getLetra().equals(Piso.get(Npiso-1).getLetra())){
-                    main.habi.eliminarHabitacion(nh);
-                }
-            }
         }else{
             System.err.println("CANCELADO!!!");
         }

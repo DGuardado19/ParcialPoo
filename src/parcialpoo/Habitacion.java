@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author Eduardo Alberto López Torres <Carnet: 00092117>
  */
-public class Habitacion extends Piso {
+public class Habitacion {
 
     public Habitacion() {
 
@@ -66,9 +66,9 @@ public class Habitacion extends Piso {
         if (main.pis.verificarPiso(letra)) {
             ha.setPiso(letra);
             ha.setHabit(Nhabitacion);
-            if(Nhabitacion%2 == 0){
+            if (Nhabitacion % 2 == 0) {
                 ha.setTipo("Doble");
-            }else{
+            } else {
                 ha.setTipo("Sencilla");
             }
             switch (estado) {
@@ -89,9 +89,22 @@ public class Habitacion extends Piso {
             System.err.println("El piso seleccionado no existe!");
         }
     }
-    
-    public void eliminarHabitacion(int nHabi){
-        habitacion.remove(nHabi-1);
+
+    public void eliminarHabitacionDePiso(String lPiso) {
+        int cont = 0, cont2 = 0;
+        int nh = main.habi.verificarExistenciaHabitacionesEnPiso(lPiso);
+        int[] arreglo = new int[nh];
+        for (Habitacion recorrer : habitacion) {
+            if (recorrer.getPiso().equals(lPiso)) {
+                System.out.println(cont-cont2);
+                arreglo[cont2] = cont-cont2;
+                ++cont2;
+            }
+            ++cont;
+        }
+        for(int i = 0;i < nh;++i){
+            habitacion.remove(arreglo[i]);
+        }
     }
 
     public void mostrarHabitaciones() {
@@ -103,11 +116,11 @@ public class Habitacion extends Piso {
             System.out.println("Estado: " + recorrer.getEstado());
         }
     }
-    
-    public int verificarExistenciaHabitacionesEnPiso(String letra){
+
+    public int verificarExistenciaHabitacionesEnPiso(String letra) {
         int cont = 0;
         for (Habitacion recorrer : habitacion) {
-            if(recorrer.getPiso().equals(letra)){
+            if (recorrer.getPiso().equals(letra)) {
                 ++cont;
             }
         }
