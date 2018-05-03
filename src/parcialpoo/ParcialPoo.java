@@ -14,8 +14,8 @@ public class ParcialPoo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here123456734122323232323
-       
+       main mai = new main();
+       mai.iniciar();
     }
     
 }
