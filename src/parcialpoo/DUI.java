@@ -17,21 +17,17 @@ import java.util.Scanner;
 public class DUI {
 
     Scanner leer = new Scanner(System.in);
-
     public DUI() {
     }
-
-    public boolean PedirD() {
-        String dui;
-        System.out.println("ingresa el dui, con todo y su numero validador, sin guiones porfavor(osea un total de 8 digitos) :):");
-       try {
-        dui = leer.nextLine();
+    
+    public boolean PedirD(String dui) {
+        try {
             int cont = 9;
             int aux, total = 0;
             for (int i = 0; i < dui.length() - 1; i++) {
                 aux = Integer.parseInt(String.valueOf(dui.charAt(i))) * cont;
                 total += aux;
-                System.out.println(aux);
+                //System.out.println(aux);
                 --cont;
             }
             aux = Integer.parseInt(String.valueOf(dui.charAt(8)));
@@ -40,21 +36,23 @@ public class DUI {
             System.out.println(b);
             if (b == aux) {
                 System.out.println("El dui es valido, continue con el proceso  de reserva :)");
+             return true;
             } else {
                 System.out.println("Ups, el dui no es valido :(, intenta de nuevo");
-                PedirD();
-            }
+                leer.nextLine();
+            return false;}
+            
         } catch (NumberFormatException e) {
             //System.out.println("You Can Only Enter Numbers!");
             System.err.println("Por favor ingrese un número");
             leer.nextLine();
-            PedirD();
+            return false;
         }
     catch (Exception r){
         System.out.println("cantidad insuficiente de numeros");
-        PedirD();
+        leer.nextLine();
     }
 
-        return true;
+        return false;
     }
 }
