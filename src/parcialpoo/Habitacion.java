@@ -152,13 +152,13 @@ public class Habitacion {
 
     public void mostrarHabitaciones() {
         for (Habitacion recorrer : habitacion) {
-            if (recorrer.getEstado().equals("Habilitado")) {
-                System.out.println("Habitacion: " + recorrer.getHabit());
-                System.out.println("Piso: " + recorrer.getPiso());
-                System.out.println("Precio por noche: " + recorrer.getPrecio());
-                System.out.println("Tipo: " + recorrer.getTipo());
-                System.out.println("Estado: " + recorrer.getEstado());
-            }
+            System.out.println("------------------------------------------------");
+            System.out.println("Habitacion: " + recorrer.getHabit());
+            System.out.println("Piso: " + recorrer.getPiso());
+            System.out.println("Precio por noche: " + recorrer.getPrecio());
+            System.out.println("Tipo: " + recorrer.getTipo());
+            System.out.println("Estado: " + recorrer.getEstado());
+            System.out.println("------------------------------------------------");
         }
     }
 
