@@ -71,6 +71,29 @@ public class Menu {
         System.out.println("5.Agregar un nuevo acceso a un paquete");
         System.out.println("6.Posicion en la que esta un acceso del paquete");
     }
+    
+    public void menuHabitacion(){
+        System.out.println("----- Menu Habitacion -----");
+        System.out.println("1.Agregar Habitacion");
+        System.out.println("2.Mostrar Habitaciones");
+        System.out.println("3.Modificar Estado de Habitacion");
+        System.out.println("4.Eliminar Habitacion");
+        System.out.print("Opcion: ");
+    }
+    
+    public void iniciarHabitacion(){
+        int opc = 5;
+        Scanner leer = new Scanner(System.in);
+        while(opc != 5){
+            menuHabitacion();
+            opc = leer.nextInt();
+            switch(opc){
+                case 1:
+                    break;
+            }
+            
+        }
+    }
 
     public void iniciarPaquete() {
         int opcion = 7;
@@ -82,7 +105,7 @@ public class Menu {
                 opcion = input.nextInt();
                 switch (opcion) {
                     case 1:
-                        op.agregar(op);
+                        //op.agregar(op);
                         break;
                     case 2:
                         op.mostrar();

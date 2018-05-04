@@ -29,7 +29,7 @@ public class main {
         habi.agregarHabitacion(4, 50, "A", 1);
         habi.agregarHabitacion(4, 50, "B", 1);
         
-        //pis.eliminarPiso(1);
+        pis.eliminarPiso(1);
         
         habi.eliminarHabitacion("A", 1);
         
