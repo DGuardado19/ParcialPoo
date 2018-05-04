@@ -105,7 +105,14 @@ public class Menu {
                 opcion = input.nextInt();
                 switch (opcion) {
                     case 1:
-                        //op.agregar(op);
+                        Scanner input2 = new Scanner(System.in);
+                        String a; int b;
+                        System.out.println("Ingrese el nombre del paquete: ");
+                        a=input2.nextLine();
+                        System.out.println("Ingrese el precio del paquete: ");
+                        System.out.print("$");
+                        b=input2.nextInt();
+                        op.agregar(a,b);
                         break;
                     case 2:
                         op.mostrar();
@@ -117,13 +124,13 @@ public class Menu {
                         op.clear();
                         break;
                     case 5:
-                        Scanner entra = new Scanner(System.in);
+                         Scanner entra = new Scanner(System.in);
                         int opr;
                         String acc;
                         System.out.println("Ingrese la posicion donde agregara el acceso: ");
                         opr = entra.nextInt();
                         System.out.println("Ingrese el acceso nuevo: ");
-                        acc = entra.nextLine();
+                        acc = entra.next();
                         op.add(opr, acc);
                         break;
                     case 6:
