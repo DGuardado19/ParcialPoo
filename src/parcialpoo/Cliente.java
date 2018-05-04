@@ -92,7 +92,7 @@ public class Cliente extends DUI {
         p1.setTelefono(input.nextLine());
         System.out.println("Ingrese el  direccion : ");
         p1.setDireccion(input.nextLine());
-        System.out.println("Ingrese el targetacredito: ");
+        System.out.println("Ingrese el tarjeta de credito: ");
         p1.setTargetacredito(input.nextLine());
         System.out.println("Ingrese el dui: ");
         dui3 = input.nextLine();
