@@ -79,18 +79,20 @@ public class Paquetes {
         paque.add(paq);     
     }
     public void mostrar(){
-        
+        int cont = 1;
         for(Paquetes correr : paque){
             //cont++;
             //System.out.println("Paquete numero: "+cont);
+            System.out.println("------------------------------");
+            System.out.println("Codigo del paquete: "+cont);
             System.out.println("Nombre al paquete: "+correr.getNombre());
             System.out.println("Precio: $"+correr.getPrecio());
-         
+            ++cont;
             
             for(String correr2 : correr.getServicio()){
-                System.out.println("Servicios: "+correr2);
-                
+                System.out.println("Servicios: "+correr2); 
             }
+            System.out.println("---------------------------");
         }
     }
     
@@ -102,11 +104,18 @@ public class Paquetes {
 
     }
 
-    //Solo para ver cuantos accesos tiene un paquete
-    public void size() {
-        System.out.println("Del paquete: " + getNombre());
-        System.out.println("Numero de accesos al paquete: ");
-        System.out.println(Servicio.size());
+    public void EliminarPaquete(int paq){
+        int cont = 1 ;
+        for(Paquetes correr : paque ){
+            ++cont;
+        }
+        if(paq<=cont){
+            paque.remove(paq-1);
+            System.out.println("El paquete se elimino");
+        }
+        else{
+            System.out.println("El paquete no existe");
+        }
     }
 
     //Para agregar un nuevo acceso a una posicion que solicite el usuario
@@ -123,13 +132,6 @@ public class Paquetes {
         
         paque.set(numero-1, auxi);        
         
-    }
-
-    //Devuelve la posicion del acceso de un paquete
-    public void get(int n) {
-        System.out.println("Del paquete: " + getNombre());
-        Servicio.get(n);
-        System.out.println("La posicion es: " + Servicio.get(n));
-    }
+    }   
 
 }
