@@ -29,7 +29,9 @@ public class Menu {
         System.out.print("Opcion: ");
         opc = leer.nextInt();
         System.out.println("");
+        try{
         switch (opc) {
+            
             case 1:
                 iniciarCliente();
                 System.out.println("parcialpoo.main.main()");
@@ -51,9 +53,14 @@ public class Menu {
                 System.out.println("NOS VEMOS....");
                 break;
             default:
-                System.out.println("INGRESE UN NUMERO");
+                System.out.println("INGRESE UN NUMERO DE OPCION");
+                iniciar();
                 break;
-
+        }
+        }
+        catch (InputMismatchException hollis){
+            System.err.println("INGRESE UN NUMERO, NO UN CARACTER");
+            leer.next();
         }
     }
     private void menuCliente(){
@@ -62,6 +69,7 @@ public class Menu {
         System.out.println("2.Eliminar todos los clientes");
         System.out.println("3.Eliminar un cliente");
         System.out.println("4.Mostrar los clientes");
+        System.out.println("5.Regresar");
         
     }
     private void menuPaquete() {
@@ -94,33 +102,42 @@ public class Menu {
         System.out.print("Opcion: ");
     }
     public void iniciarCliente(){
-        int opc = 5;
+        int opc = 6;
         Scanner input = new Scanner(System.in);
-        Cliente top = new Cliente();
         while(opc!=4){
             menuCliente();
             opc=input.nextInt();
+            try{
             switch(opc){
                 case 1:
-                    top.add();
+                    main.cl.add();
                     break;
                 case 2:
-                    top.clear();
+                    main.cl.clear();
                     break;
                 case 3:
                     int po;
                     System.out.println("Ingrese el codigo del cliente para eliminarlo: ");
                     po=input.nextInt();
-                    top.eliminarcliente(po);
+                    main.cl.eliminarcliente(po);
                     break;
                 case 4:
-                    top.mostrar();
+                    main.cl.mostrar();
                     break;
+                case 5:
+                    iniciar();
                 default:
-                    System.out.println("INGRESE UN NUMERO");
+                    System.out.println("INGRESE UN NUMERO DE OPCION");
+                    iniciarCliente();
                     break;
+            }
                     
             }
+            catch (InputMismatchException hollis){
+            System.err.println("INGRESE UN NUMERO, NO UN CARACTER");
+            input.next();
+            iniciarCliente();
+        }
         }
     }
     public void iniciarPiso(){
@@ -129,6 +146,7 @@ public class Menu {
         while(opc != 5){
             menuPiso();
             opc = leer.nextInt();
+            try{
             switch(opc){
                 case 1:
                     String letra;
@@ -173,8 +191,16 @@ public class Menu {
                     break;
                 default:
                     System.out.println("INGRESE UN NUMERO");
+                    iniciarPiso();
                     break;
             }
+            }
+            catch (InputMismatchException hollis){
+            System.err.println("INGRESE UN NUMERO, NO UN CARACTER");
+            leer.next();
+            iniciarPiso();
+            
+        }
         }
     }
     
@@ -184,6 +210,7 @@ public class Menu {
         while(opc != 5){
             menuHabitacion();
             opc = leer.nextInt();
+            try{
             switch(opc){
                 case 1:
                     int numeroH;
@@ -240,8 +267,15 @@ public class Menu {
                     break;
                 default:
                     System.out.println("INGRESE UN NUMERO");
+                    iniciarHabitacion();
                     break;
             }
+            }
+            catch (InputMismatchException hollis){
+            System.err.println("INGRESE UN NUMERO, NO UN CARACTER");
+            leer.next();
+            iniciarHabitacion();
+        }
             
         }
     }
@@ -249,7 +283,7 @@ public class Menu {
     public void iniciarPaquete() {
         int opcion = 7;
         Scanner input = new Scanner(System.in);
-        Paquetes op = new Paquetes();
+        
         while (opcion != 6) {
             menuPaquete();
             try {
@@ -263,19 +297,19 @@ public class Menu {
                         System.out.println("Ingrese el precio del paquete: ");
                         System.out.print("$");
                         b=input2.nextInt();
-                        op.agregar(a,b);
+                        main.paque.agregar(a,b);
                         break;
                     case 2:
-                        op.mostrar();
+                        main.paque.mostrar();
                         break;
                     case 3:
                         int ak;
                         System.out.println("Ingrese el codigo del paquete a eliminar: ");
                         ak=input.nextInt();
-                        op.EliminarPaquete(ak);
+                        main.paque.EliminarPaquete(ak);
                         break;
                     case 4:
-                        op.clear();
+                        main.paque.clear();
                         break;
                     case 5:
                         Scanner entra = new Scanner(System.in);
@@ -285,7 +319,7 @@ public class Menu {
                         opr = entra.nextInt();
                         System.out.println("Ingrese el acceso nuevo: ");
                         acc = entra.next();
-                        op.add(opr, acc);
+                        main.paque.add(opr, acc);
                         break;
                     case 6:
                         System.out.println("Volviendo al menu principal...");
@@ -293,12 +327,14 @@ public class Menu {
                         break;
                     default:
                         System.out.println("INGRESE UN NUMERO");
+                        iniciarPaquete();
                         break;
 
                 }
             } catch (InputMismatchException hola) {
                 System.err.println("INGRESE UN NUMERO, NO UN CARACTER, TONTO");
-                input.nextLine();
+                input.next();
+                iniciarPaquete();
             }
 
         }
