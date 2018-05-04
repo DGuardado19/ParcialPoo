@@ -76,48 +76,61 @@ public class Reservacion {
         this.cantidad = cantidad;
     }
 
-    public void AgregarReservacion(String dui, int dia, String piso, int ncuarto) {
-        Reservacion de = new Reservacion();
-        de.setDui(dui);
-        de.setDia(dia);
-        de.setPiso(piso);
-        de.setNcuarto(ncuarto);
-        int e, paquete;
-        System.out.println(main.paque.paque.get(0).getNombre());
-        System.out.println("Cuantas habitaciones desea reservar? :");
-        e = leer.nextInt();
-        String[] pack = new String[2];
-        if (e <= 2 && e >= 1) {
-            String[][] pato = new String[e][2];
-            for (int i = 0; i < e; i++) {
-                System.out.println("Ingrese el numero de la habitacion :  ");
-                pato[i][0] = String.valueOf(leer.nextInt());
-                System.out.println("Ingrese el piso:  ");
-                pato[i][1] = leer.next();
+    public void AgregarReservacion(String dui, int dia) {
+        if (verificarCliente(dui)) {
+            Reservacion de = new Reservacion();
+            de.setDui(dui);
+            de.setDia(dia);
+            int e, paquete;
+            System.out.println(main.paque.paque.get(0).getNombre());
+            System.out.println("Cuantas habitaciones desea reservar? :");
+            e = leer.nextInt();
+            String[] pack = new String[2];
+            if (e <= 2 && e >= 1) {
+                String[][] pato = new String[e][2];
+                for (int i = 0; i < e; i++) {
+                    System.out.println("Ingrese el numero de la habitacion :  ");
+                    pato[i][0] = String.valueOf(leer.nextInt());
+                    System.out.println("Ingrese el piso:  ");
+                    pato[i][1] = leer.next();
+                }
+                de.setCantidad(pato);
+                System.out.println("Que paquete desea agregar?");
+                main.paque.mostrar();
+                System.out.println("");
+                System.out.print("Opcion: ");
+                paquete = leer.nextInt();
+                pack[0] = main.paque.paque.get(paquete - 1).getNombre();
+                pack[1] = String.valueOf(main.paque.paque.get(paquete - 1).getPrecio());
+                de.setPaquete(pack);
+                Reserva.add(de);
             }
-            de.setCantidad(pato);
-            System.out.println("Que paquete desea agregar?");
-            main.paque.mostrar();
-            System.out.println("");
-            System.out.print("Opcion: ");
-            paquete = leer.nextInt();
-            pack[0] = main.paque.paque.get(paquete - 1).getNombre();
-            pack[1] = String.valueOf(main.paque.paque.get(paquete - 1).getPrecio());
-            de.setPaquete(pack);
-            Reserva.add(de);
+        }else{
+            System.err.println("El dui del cliente no existe!");
         }
+    }
 
+    public boolean verificarCliente(String dui) {
+        boolean verificar = false;
+        for (Cliente recorrer : main.cl.clientes) {
+            if (recorrer.getDui().equals(dui)) {
+                verificar = true;
+            }
+        }
+        return verificar;
     }
 
     public void mostrar() {
-        for(Reservacion recorrer: Reserva){
+        for (Reservacion recorrer : Reserva) {
             System.out.println(recorrer.getDui());
             System.out.println(recorrer.getNcuarto());
-            for(int i=0; i<recorrer.getCantidad().length; i++){
+            for (int i = 0; i < recorrer.getCantidad().length; i++) {
                 System.out.println(recorrer.getCantidad()[i][0]);
                 System.out.println(recorrer.getCantidad()[i][1]);
             }
-            
+            for (int j = 0; j < recorrer.getPaquete().length; j++) {
+                System.out.println(recorrer.getPaquete()[j]);
+            }
         }
     }
 }
