@@ -14,7 +14,7 @@ import java.util.*;
 public class Cliente extends DUI {
 
     private String nombre, apellidos, dui, genero, telefono, direccion, targetacredito;
-    private ArrayList<Cliente> clientes;
+    public ArrayList<Cliente> clientes;
 
     public Cliente() {
         clientes = new ArrayList<>();

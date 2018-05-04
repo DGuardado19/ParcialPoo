@@ -36,7 +36,7 @@ public class Menu {
                 break;
             case 2:
                 Reservacion p=new Reservacion();
-                p.AgregarReservacion("00000", 1, "Q", 1);
+                p.AgregarReservacion("056120044", 1);
                 p.mostrar();
                 break;
             case 3:
@@ -103,8 +103,9 @@ public class Menu {
     public void iniciarCliente(){
         int opc = 6;
         Scanner input = new Scanner(System.in);
-        while(opc!=4){
+        while(opc!=5){
             menuCliente();
+            System.out.print("Opcion: ");
             opc=input.nextInt();
             try{
             switch(opc){
@@ -286,6 +287,7 @@ public class Menu {
         while (opcion != 6) {
             menuPaquete();
             try {
+                System.out.print("Opcion: ");
                 opcion = input.nextInt();
                 switch (opcion) {
                     case 1:
