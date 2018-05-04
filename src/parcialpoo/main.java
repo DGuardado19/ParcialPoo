@@ -16,6 +16,8 @@ public class main {
      */
     public static Habitacion habi = new Habitacion();
     public static Piso pis = new Piso();
+    public static Paquetes paque = new Paquetes();
+    public static Cliente cl = new Cliente();
 
     public static void main(String[] args) {
         Menu menu = new Menu();
