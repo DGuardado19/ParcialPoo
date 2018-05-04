@@ -42,35 +42,42 @@ public class Piso{
         Piso.add(piso);
     }
     
-    public void modificarPisoLetra(int Npiso, String letra){
+    public void modificarPisoEstado(String Lpiso, int Estado){
+        int cont = 0, aux = 0;
+        for(Piso recorrer: Piso){
+            if(recorrer.getLetra().equals(Lpiso)){
+                aux = cont;
+            }
+            ++cont;
+        }
         Piso piso = new Piso();
-        piso.setLetra(letra);
-        piso.setEstado(Piso.get(Npiso-1).getEstado());
-        Piso.add(Npiso-1, piso);
-        Piso.remove(Npiso);
-    }
-    
-    public void modificarPisoEstado(int Npiso, int Estado){
-        Piso piso = new Piso();
-        piso.setLetra(Piso.get(Npiso-1).getLetra());
+        piso.setLetra(Piso.get(aux).getLetra());
         if(Estado == 1){
             piso.setEstado("Habilitada");
         }else if(Estado == 2){
             piso.setEstado("Desabilitada");
         }
-        Piso.add(Npiso-1, piso);
-        Piso.remove(Npiso);
+        Piso.add(aux, piso);
+        Piso.remove(aux+1);
     }
     
-    public void eliminarPiso(int Npiso){
+    public void eliminarPiso(String Lpiso){       
+        int cont = 0, aux = 0;
+        for(Piso recorrer: Piso){
+            if(recorrer.getLetra().equals(Lpiso)){
+                aux = cont;
+            }
+            ++cont;
+        }
+        
         String respuesta;
-        int nh = main.habi.verificarExistenciaHabitacionesEnPiso(Piso.get(Npiso-1).getLetra());
+        int nh = main.habi.verificarExistenciaHabitacionesEnPiso(Piso.get(aux).getLetra());
         Scanner leer = new Scanner(System.in);
         System.out.print("Desea eliminar "+nh+" habitaciones?(s/n): ");
         respuesta = leer.next();
         if("s".equals(respuesta)){
-            main.habi.eliminarHabitacionDePiso(Piso.get(Npiso-1).getLetra());
-            Piso.remove(Npiso-1);
+            main.habi.eliminarHabitacionDePiso(Piso.get(aux).getLetra());
+            Piso.remove(aux);
         }else{
             System.err.println("CANCELADO!!!");
         }
@@ -81,7 +88,8 @@ public class Piso{
         int cont = 1;
         for(Piso recorrer: Piso){
             System.out.print(cont+" - ");
-            System.out.print(recorrer.getLetra()+"\n");
+            System.out.print(recorrer.getLetra()+" - ");
+            System.out.println(recorrer.getEstado()+"\n");
             ++cont;
         }
     }

@@ -18,6 +18,8 @@ public class main {
     public static Piso pis = new Piso();
 
     public static void main(String[] args) {
+        Menu menu = new Menu();
+        
         pis.agregarPiso("A");
         pis.agregarPiso("B");
         pis.agregarPiso("C");
@@ -29,11 +31,7 @@ public class main {
         habi.agregarHabitacion(4, 50, "A", 1);
         habi.agregarHabitacion(4, 50, "B", 1);
         
-        pis.eliminarPiso(1);
-        
-        habi.eliminarHabitacion("A", 1);
-        
-        habi.mostrarHabitaciones();
+        menu.iniciar();
     }
 
 }

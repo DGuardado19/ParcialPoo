@@ -18,14 +18,15 @@ public class Menu {
     public void iniciar() {
         int opc;
         Scanner leer = new Scanner(System.in);
-        System.out.print("---------BIENVENIDO-----------\n");
-        System.out.print("----Hotel Vina Raphiña--------\n");
-        System.out.print("1. tal \n");
-        System.out.print("2. tal \n");
-        System.out.print("3. tal \n");
-        System.out.print("4. tal \n");
-        System.out.print("5. tal \n");
-        System.out.print("Opcion hotel, que desea hacer? (provicional)\n");
+        System.out.println("---------BIENVENIDO-----------");
+        System.out.println("----Hotel Vina Raphiña--------");
+        System.out.println("1. Cliente");
+        System.out.println("2. Reservacion");
+        System.out.println("3. Paquete");
+        System.out.println("4. Habitacion");
+        System.out.println("5. Piso");
+        System.out.println("6. Salir");
+        System.out.print("Opcion: ");
         opc = leer.nextInt();
         System.out.println("");
         switch (opc) {
@@ -39,22 +40,12 @@ public class Menu {
                 System.out.println("parcialpoo.main.main()");
                 break;
             case 4:
-                System.out.println("parcialpoo.main.main()");
+                iniciarHabitacion();
                 break;
             case 5:
-                System.out.println("parcialpoo.main.main()");
+                iniciarPiso();
                 break;
             case 6:
-                System.out.println("parcialpoo.main.main()");
-                break;
-            case 7:
-                System.out.println("parcialpoo.main.main()");
-                break;
-            case 8:
-                System.out.println("parcialpoo.main.main()");
-                break;
-            case 9:
-                System.out.println("parcialpoo.main.main()");
                 break;
             default:
                 break;
@@ -62,7 +53,7 @@ public class Menu {
         }
     }
 
-    public void menuPaquete() {
+    private void menuPaquete() {
         System.out.println("----- MENU DE PAQUETES -----");
         System.out.println("1.Agregar nuevo paquete");
         System.out.println("2.Mostrar paquetes");
@@ -72,23 +63,137 @@ public class Menu {
         System.out.println("6.Regresar al menu");
     }
     
-    public void menuHabitacion(){
+    private void menuHabitacion(){
         System.out.println("----- Menu Habitacion -----");
         System.out.println("1.Agregar Habitacion");
         System.out.println("2.Mostrar Habitaciones");
         System.out.println("3.Modificar Estado de Habitacion");
         System.out.println("4.Eliminar Habitacion");
+        System.out.println("5.Regresar");
         System.out.print("Opcion: ");
     }
     
+    private void menuPiso(){
+        System.out.println("---------- Menu Piso ----------");
+        System.out.println("1.Agregar Piso");
+        System.out.println("2.Mostrar Pisos");
+        System.out.println("3.Modificar Estado de Piso");
+        System.out.println("4.Eliminar Piso");
+        System.out.println("5.Regresar");
+        System.out.print("Opcion: ");
+    }
+    
+    public void iniciarPiso(){
+        int opc = 6;
+        Scanner leer = new Scanner(System.in);
+        while(opc != 5){
+            menuPiso();
+            opc = leer.nextInt();
+            switch(opc){
+                case 1:
+                    String letra;
+                    
+                    System.out.println("");
+                    System.out.print("Escriba la letra del piso: ");
+                    letra = leer.next();
+                    
+                    main.pis.agregarPiso(letra);
+                    System.out.println("");
+                    break;
+                case 2:
+                    System.out.println("");
+                    main.pis.mostrarPiso();
+                    System.out.println("");
+                    break;
+                case 3:
+                    String Lpiso;
+                    int Estado;
+                    System.out.println("");
+                    
+                    System.out.print("Escribe la letra del Piso: ");
+                    Lpiso = leer.next();
+                    System.out.print("Escribe el estado del piso (1-Habilitado, 2-Desabilitado, 3-Reservado): ");
+                    Estado = leer.nextInt();                   
+                    
+                    main.pis.modificarPisoEstado(Lpiso, Estado);
+                    System.out.println("");
+                    break;
+                case 4:
+                    String Lpiso2;
+                    System.out.println("");
+                    
+                    System.out.print("Escribe la letra del piso a eliminar: ");
+                    Lpiso2 = leer.next();
+                    
+                    main.pis.eliminarPiso(Lpiso2);
+                    System.out.println("");
+                    break;
+                case 5:
+                    iniciar();
+                    break;
+            }
+        }
+    }
+    
     public void iniciarHabitacion(){
-        int opc = 5;
+        int opc = 6;
         Scanner leer = new Scanner(System.in);
         while(opc != 5){
             menuHabitacion();
             opc = leer.nextInt();
             switch(opc){
                 case 1:
+                    int numeroH;
+                    double precio;
+                    String letra;
+                    int estado;
+                    
+                    System.out.println("");
+                    System.out.print("Escribe el numero de la habitacion: ");
+                    numeroH = leer.nextInt();
+                    System.out.print("Escriba la letra del piso: ");
+                    letra = leer.next();
+                    System.out.print("Escribe el precio: ");
+                    precio = leer.nextDouble();
+                    System.out.print("Escribe el estado (1-Habilitado, 2-Desabilitado, 3-Reservado): ");
+                    estado = leer.nextInt();
+                    
+                    main.habi.agregarHabitacion(numeroH, precio, letra, estado);
+                    System.out.println("");
+                    break;
+                case 2:
+                    System.out.println("");
+                    main.habi.mostrarHabitaciones();
+                    System.out.println("");
+                    break;
+                case 3:
+                    int numeroH2;
+                    String letra2;
+                    
+                    System.out.println("");
+                    System.out.print("Escriba el numero de la habitacion: ");
+                    numeroH2 = leer.nextInt();
+                    System.out.print("Escriba la letra del piso: ");
+                    letra2 = leer.next();
+                    
+                    main.habi.modificarHabitacionEstado(letra2, numeroH2);
+                    break;
+                case 4:
+                    int numeroH3;
+                    String letra3;
+                    
+                    System.out.println("");
+                    System.out.print("Escriba el numero de la habitacion: ");
+                    numeroH3 = leer.nextInt();
+                    System.out.print("Escriba la letra del piso: ");
+                    letra3 = leer.next();
+                    
+                    main.habi.eliminarHabitacion(letra3, numeroH3);
+                    System.out.println("");
+                    break;
+                case 5:
+                    System.out.println("");
+                    iniciar();
                     break;
             }
             
