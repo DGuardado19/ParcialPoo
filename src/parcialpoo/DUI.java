@@ -34,7 +34,7 @@ public class DUI {
             int b;
             b = 10 - (total % 10);
             System.out.println(b);
-            if (b == aux) {
+            if (b == aux && dui.length() == 9) {
                 System.out.println("El dui es valido, continue con el proceso  de reserva :)");
              return true;
             } else {

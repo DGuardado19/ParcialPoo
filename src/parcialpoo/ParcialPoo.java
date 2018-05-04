@@ -14,7 +14,7 @@ public class ParcialPoo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       main mai = new main();
+       Menu mai = new Menu();
        mai.iniciar();
     }
     

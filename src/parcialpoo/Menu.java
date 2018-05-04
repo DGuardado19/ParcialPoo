@@ -30,18 +30,17 @@ public class Menu {
         opc = leer.nextInt();
         System.out.println("");
         try{
-        switch (opc) {
-            
+        switch (opc) {            
             case 1:
                 iniciarCliente();
-                System.out.println("parcialpoo.main.main()");
                 break;
             case 2:
-                System.out.println("parcialpoo.main.main()");
+                Reservacion p=new Reservacion();
+                p.AgregarReservacion("00000", 1, "Q", 1);
+                p.mostrar();
                 break;
             case 3:
                 iniciarPaquete();
-                System.out.println("parcialpoo.main.main()");
                 break;
             case 4:
                 iniciarHabitacion();

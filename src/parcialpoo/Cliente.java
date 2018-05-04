@@ -98,7 +98,6 @@ public class Cliente extends DUI {
         dui3 = input.nextLine();
         if (d.PedirD(dui3)) {
             p1.setDui(dui3);
-
         }
         System.out.println("Agregado correctamente :) ");
 
