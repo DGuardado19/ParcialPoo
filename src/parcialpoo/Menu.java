@@ -31,6 +31,7 @@ public class Menu {
         System.out.println("");
         switch (opc) {
             case 1:
+                iniciarCliente();
                 System.out.println("parcialpoo.main.main()");
                 break;
             case 2:
@@ -47,13 +48,22 @@ public class Menu {
                 iniciarPiso();
                 break;
             case 6:
+                System.out.println("NOS VEMOS....");
                 break;
             default:
+                System.out.println("INGRESE UN NUMERO");
                 break;
 
         }
     }
-
+    private void menuCliente(){
+        System.out.println("--- MENU DE CLIENTES ---");
+        System.out.println("1.Agregar un cliente");
+        System.out.println("2.Eliminar todos los clientes");
+        System.out.println("3.Eliminar un cliente");
+        System.out.println("4.Mostrar los clientes");
+        
+    }
     private void menuPaquete() {
         System.out.println("----- MENU DE PAQUETES -----");
         System.out.println("1.Agregar nuevo paquete");
@@ -83,7 +93,36 @@ public class Menu {
         System.out.println("5.Regresar");
         System.out.print("Opcion: ");
     }
-    
+    public void iniciarCliente(){
+        int opc = 5;
+        Scanner input = new Scanner(System.in);
+        Cliente top = new Cliente();
+        while(opc!=4){
+            menuCliente();
+            opc=input.nextInt();
+            switch(opc){
+                case 1:
+                    top.add();
+                    break;
+                case 2:
+                    top.clear();
+                    break;
+                case 3:
+                    int po;
+                    System.out.println("Ingrese el codigo del cliente para eliminarlo: ");
+                    po=input.nextInt();
+                    top.eliminarcliente(po);
+                    break;
+                case 4:
+                    top.mostrar();
+                    break;
+                default:
+                    System.out.println("INGRESE UN NUMERO");
+                    break;
+                    
+            }
+        }
+    }
     public void iniciarPiso(){
         int opc = 6;
         Scanner leer = new Scanner(System.in);
@@ -131,6 +170,9 @@ public class Menu {
                     break;
                 case 5:
                     iniciar();
+                    break;
+                default:
+                    System.out.println("INGRESE UN NUMERO");
                     break;
             }
         }
@@ -195,6 +237,9 @@ public class Menu {
                 case 5:
                     System.out.println("");
                     iniciar();
+                    break;
+                default:
+                    System.out.println("INGRESE UN NUMERO");
                     break;
             }
             
