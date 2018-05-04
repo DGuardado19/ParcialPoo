@@ -66,10 +66,10 @@ public class Menu {
         System.out.println("----- MENU DE PAQUETES -----");
         System.out.println("1.Agregar nuevo paquete");
         System.out.println("2.Mostrar paquetes");
-        System.out.println("3.Numero de acceso que tienen los paquetes");
+        System.out.println("3.Eliminar un paquete");
         System.out.println("4.Eliminar todos los paquetes");
         System.out.println("5.Agregar un nuevo acceso a un paquete");
-        System.out.println("6.Posicion en la que esta un acceso del paquete");
+        System.out.println("6.Regresar al menu");
     }
     
     public void menuHabitacion(){
@@ -118,13 +118,16 @@ public class Menu {
                         op.mostrar();
                         break;
                     case 3:
-                        op.size();
+                        int ak;
+                        System.out.println("Ingrese el codigo del paquete a eliminar: ");
+                        ak=input.nextInt();
+                        op.EliminarPaquete(ak);
                         break;
                     case 4:
                         op.clear();
                         break;
                     case 5:
-                         Scanner entra = new Scanner(System.in);
+                        Scanner entra = new Scanner(System.in);
                         int opr;
                         String acc;
                         System.out.println("Ingrese la posicion donde agregara el acceso: ");
@@ -134,11 +137,7 @@ public class Menu {
                         op.add(opr, acc);
                         break;
                     case 6:
-                        Scanner ent = new Scanner(System.in);
-                        int te;
-                        System.out.println("Ingrese la posicion del acceso al paquete: ");
-                        te = ent.nextInt();
-                        op.get(te);
+                        System.out.println("Volviendo al menu principal");
                         break;
                     default:
                         System.out.println("INGRESE UN NUMERO");
