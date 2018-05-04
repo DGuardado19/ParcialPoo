@@ -96,7 +96,7 @@ public class Cliente extends DUI {
         p1.setTargetacredito(input.nextLine());
         System.out.println("Ingrese el dui: ");
         dui3 = input.nextLine();
-        if (d.PedirD(dui3)) {
+        if (d.PedirD(dui3)==true) {
             p1.setDui(dui3);
         }
         System.out.println("Agregado correctamente :) ");
