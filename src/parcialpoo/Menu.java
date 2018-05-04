@@ -37,6 +37,7 @@ public class Menu {
                 System.out.println("parcialpoo.main.main()");
                 break;
             case 3:
+                iniciarPaquete();
                 System.out.println("parcialpoo.main.main()");
                 break;
             case 4:
@@ -242,7 +243,8 @@ public class Menu {
                         op.add(opr, acc);
                         break;
                     case 6:
-                        System.out.println("Volviendo al menu principal");
+                        System.out.println("Volviendo al menu principal...");
+                        iniciar();
                         break;
                     default:
                         System.out.println("INGRESE UN NUMERO");
