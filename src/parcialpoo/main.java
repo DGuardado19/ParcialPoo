@@ -5,6 +5,8 @@
  */
 package parcialpoo;
 
+import java.util.*;
+
 /**
  *
  * @author DGuardado <david.guardado at guardado.org>
@@ -33,6 +35,14 @@ public class main {
         habi.agregarHabitacion(1, 24, "A", 1);
         habi.agregarHabitacion(4, 50, "A", 1);
         habi.agregarHabitacion(4, 50, "B", 1);
+        
+        Paquetes paque2 = new Paquetes();
+        paque2.setNombre("Basico");
+        paque2.setPrecio(23);
+        ArrayList<String> aux = new ArrayList<String>();
+        aux.add("Internet");
+        paque2.setServicio(aux);
+        paque.paque.add(paque2);
         
         menu.iniciar();
     }

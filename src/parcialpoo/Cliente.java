@@ -80,27 +80,30 @@ public class Cliente extends DUI {
         Cliente p1 = new Cliente();
         clientes.add(p1);
         DUI d = new DUI();
-        String dui3;
-        Scanner input = new Scanner(System.in);
-        System.out.println("Ingrese el nombre: ");
-        p1.setNombre(input.nextLine());
-        System.out.println("Ingrese el apellido: ");
-        p1.setApellidos(input.nextLine());
-        System.out.println("Ingrese el genero: ");
-        p1.setGenero(input.nextLine());
-        System.out.println("Ingrese el telefono: ");
-        p1.setTelefono(input.nextLine());
-        System.out.println("Ingrese el  direccion : ");
-        p1.setDireccion(input.nextLine());
-        System.out.println("Ingrese el tarjeta de credito: ");
-        p1.setTargetacredito(input.nextLine());
-        System.out.println("Ingrese el dui: ");
-        dui3 = input.nextLine();
-        if (d.PedirD(dui3)==true) {
-            p1.setDui(dui3);
-        }
-        System.out.println("Agregado correctamente :) ");
+        String dui;
 
+        Scanner input = new Scanner(System.in);
+        System.out.print("Ingrese el nombre: ");
+        p1.setNombre(input.nextLine());
+        System.out.print("Ingrese el apellido: ");
+        p1.setApellidos(input.nextLine());
+        System.out.print("Ingrese el genero: ");
+        p1.setGenero(input.nextLine());
+        System.out.print("Ingrese el telefono: ");
+        p1.setTelefono(input.nextLine());
+        System.out.print("Ingrese el  direccion : ");
+        p1.setDireccion(input.nextLine());
+        System.out.print("Ingrese el tarjeta de credito: ");
+        p1.setTargetacredito(input.nextLine());
+        System.out.print("Ingrese el dui: ");
+        dui = leer.next();
+        
+        while(!d.PedirD(dui)){
+            System.out.print("Ingrese un dui valido: ");
+            dui = leer.next();
+        }
+        
+        p1.setDui(dui);
     }
 
     public void clear() {
@@ -109,25 +112,24 @@ public class Cliente extends DUI {
     }
 
     public void eliminarcliente(int cliente) {
-        int cont =1;
+        int cont = 1;
         for (Cliente recorrer : clientes) {
             ++cont;
         }
-        if (cliente<=cont) {
-           clientes.remove(cliente-1);
+        if (cliente <= cont) {
+            clientes.remove(cliente - 1);
             System.out.println("El cliente se ha eliminado con exito :)");
-        }
-        else{
+        } else {
             System.out.println("El cliente no existe :3");
         }
     }
 
     public void mostrar() {
         System.out.println("--- MOSTRANDO LA LISTA DE CLIENTES ---");
-        int cont=1;
-        for (Cliente a: clientes) {
+        int cont = 1;
+        for (Cliente a : clientes) {
             System.out.println("-----------------------------------------------------------");
-            System.out.println("cliente "+cont);
+            System.out.println("cliente " + cont);
             System.out.println("Nombres: " + a.getNombre());
             System.out.println("Apellidos: " + a.getApellidos());
             System.out.println("Genero: " + a.getGenero());
@@ -137,7 +139,7 @@ public class Cliente extends DUI {
             System.out.println("dui: " + a.getDui());
             System.out.println("----------------------------------------------------------");
             ++cont;
-        
+
         }
     }
 }

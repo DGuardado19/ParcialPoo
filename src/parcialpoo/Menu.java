@@ -110,22 +110,32 @@ public class Menu {
             try{
             switch(opc){
                 case 1:
+                    System.out.println("");
                     main.cl.add();
+                    System.out.println("");
                     break;
                 case 2:
+                    System.out.println("");
                     main.cl.clear();
+                    System.out.println("");
                     break;
                 case 3:
                     int po;
+                    System.out.println("");
                     System.out.println("Ingrese el codigo del cliente para eliminarlo: ");
                     po=input.nextInt();
                     main.cl.eliminarcliente(po);
+                    System.out.println("");
                     break;
                 case 4:
+                    System.out.println("");
                     main.cl.mostrar();
+                    System.out.println("");
                     break;
                 case 5:
+                    System.out.println("");
                     iniciar();
+                    break;
                 default:
                     System.out.println("INGRESE UN NUMERO DE OPCION");
                     iniciarCliente();
