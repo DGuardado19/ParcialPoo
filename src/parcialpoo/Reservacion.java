@@ -89,9 +89,10 @@ public class Reservacion {
             if (e <= 2 && e >= 1) {
                 String[][] pato = new String[e][2];
                 for (int i = 0; i < e; i++) {
-                    System.out.println("Ingrese el numero de la habitacion :  ");
+                    System.out.println("----------Habitacion "+(i+1)+"----------");
+                    System.out.print("Ingrese el numero de la habitacion :  ");
                     pato[i][0] = String.valueOf(leer.nextInt());
-                    System.out.println("Ingrese el piso:  ");
+                    System.out.print("Ingrese el piso:  ");
                     pato[i][1] = leer.next();
                 }
                 de.setCantidad(pato);
