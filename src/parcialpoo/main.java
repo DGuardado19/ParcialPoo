@@ -32,7 +32,7 @@ public class main {
         pis.agregarPiso("E");
         
         habi.agregarHabitacion(2, 30, "A", 1);
-        habi.agregarHabitacion(1, 24, "A", 1);
+        habi.agregarHabitacion(1, 24, "A", 2);
         habi.agregarHabitacion(4, 50, "A", 1);
         habi.agregarHabitacion(4, 50, "B", 1);
         

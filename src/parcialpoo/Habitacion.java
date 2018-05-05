@@ -90,13 +90,13 @@ public class Habitacion {
         }
     }
 
-    public void modificarHabitacionEstado(String piso, int numero) {
+    public void modificarHabitacionEstado(String piso, int nHabi, int estado) {
         boolean verificar = false;
         Habitacion h = new Habitacion();
         int cont = 0, aux = 0;
         for (Habitacion recorrer : habitacion) {
             if (recorrer.getPiso().equals(piso)) {
-                if (recorrer.getHabit() == numero) {
+                if (recorrer.getHabit() == nHabi) {
                     verificar = true;
                     aux = cont;
                 }
@@ -105,10 +105,24 @@ public class Habitacion {
         }
         if (verificar == true) {
             h.setHabit(habitacion.get(aux).getHabit());
+            h.setPrecio(habitacion.get(aux).getPrecio());
+            h.setTipo(habitacion.get(aux).getTipo());
             h.setPiso(habitacion.get(aux).getPiso());
-            h.setPiso(habitacion.get(aux).getPiso());
-            h.setPiso(habitacion.get(aux).getPiso());
-            habitacion.remove(aux);
+            switch (estado) {
+                case 1:
+                    h.setEstado("Habilitado");
+                    break;
+                case 2:
+                    h.setEstado("Desabilitado");
+                    break;
+                case 3:
+                    h.setEstado("Reservado");
+                    break;
+                default:
+                    break;
+            }
+            habitacion.add(aux, h);
+            habitacion.remove(aux+1);
         } else {
             System.err.println("La habitacion no existe!!!!");
         }

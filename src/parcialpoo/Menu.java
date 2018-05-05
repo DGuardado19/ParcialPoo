@@ -37,12 +37,19 @@ public class Menu {
                 case 2:
                     String dui;
                     int dia;
-                    System.out.print("Ingrese el dui del cliente: ");
-                    dui = leer.next();
+
                     System.out.print("Ingrese los dias a reservar de la habitacion: ");
                     dia = leer.nextInt();
-                    main.reserv.AgregarReservacion(dui, dia);
-                    main.reserv.mostrar();
+                    if (dia <= 7) {
+                        System.out.print("Ingrese el dui del cliente: ");
+                        dui = leer.next();
+                        main.reserv.AgregarReservacion(dui, dia);
+                        iniciar();
+                    }else{
+                        System.err.println("No se puede reservar mas de 7 dias!!!");
+                        iniciar();
+                    }
+
                     break;
                 case 3:
                     iniciarPaquete();
@@ -253,7 +260,8 @@ public class Menu {
                         System.out.println("");
                         break;
                     case 3:
-                        int numeroH2;
+                        int numeroH2,
+                         estadoH;
                         String letra2;
 
                         System.out.println("");
@@ -261,8 +269,11 @@ public class Menu {
                         numeroH2 = leer.nextInt();
                         System.out.print("Escriba la letra del piso: ");
                         letra2 = leer.next();
+                        System.out.print("Ingrese el estado de la habitación: ");
+                        estadoH = leer.nextInt();
 
-                        main.habi.modificarHabitacionEstado(letra2, numeroH2);
+                        main.habi.modificarHabitacionEstado(letra2, numeroH2, estadoH);
+                        System.out.println("");
                         break;
                     case 4:
                         int numeroH3;

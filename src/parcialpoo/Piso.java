@@ -37,7 +37,7 @@ public class Piso{
     
     public void agregarPiso(String letra){
         Piso piso = new Piso();
-        piso.setEstado("Desabilitado");
+        piso.setEstado("Habilitado");
         piso.setLetra(letra);
         Piso.add(piso);
     }

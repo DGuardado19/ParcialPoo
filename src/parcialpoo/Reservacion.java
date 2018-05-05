@@ -90,32 +90,43 @@ public class Reservacion {
             String pregunta;
             System.out.print("Desea hacer la reservacion a este cliente? (s/n): ");
             pregunta = leer.next();
+            
             if (pregunta.equals("s")) {
                 Reservacion de = new Reservacion();
                 de.setDui(dui);
                 de.setDia(dia);
                 int e, paquete;
+                double precio = 0.0;
+                
                 System.out.print("Cuantas habitaciones desea reservar? :");
                 e = leer.nextInt();
                 String[] pack = new String[2];
+                
                 if (e <= 2 && e >= 1) {
                     String[][] pato = new String[e][2];
+                    String[][] datos = new String[2][2];
+                    
                     for (int i = 0; i < e; i++) {
                         System.out.println("----------Habitacion " + (i + 1) + "----------");
                         System.out.print("Ingrese el numero de la habitacion :  ");
                         pato[i][0] = String.valueOf(leer.nextInt());
                         System.out.print("Ingrese el piso:  ");
                         pato[i][1] = leer.next();
-                        if (verificarPiso(pato[i][1])) {
-                            if (!verificarHabitacion(pato[i][1], Integer.parseInt(pato[i][0]))) {
-                                System.err.println("La habitacion esta inhabilitado!!!");
+                        datos = verificarHabitacion(pato[i][1], Integer.parseInt(pato[i][0]));
+                        
+                        if (datos[1][0].equals("Habilitado")) {
+                            if (!datos[0][0].equals("Habilitado")) {
+                                System.err.println("La habitacion esta inhabilitado y/o reservado!!!");
                                 --i;
                             }
                         } else {
                             System.err.println("El piso esta inhabilitado!!!");
                             --i;
                         }
+                        precio += dia*(Double.parseDouble(datos[0][1]));
+                        main.habi.modificarHabitacionEstado(pato[i][1], Integer.parseInt(pato[i][0]), 3);
                     }
+                    
                     de.setCantidad(pato);
                     System.out.println("Que paquete desea agregar?");
                     main.paque.mostrar();
@@ -124,6 +135,8 @@ public class Reservacion {
                     paquete = leer.nextInt();
                     pack[0] = main.paque.paque.get(paquete - 1).getNombre();
                     pack[1] = String.valueOf(main.paque.paque.get(paquete - 1).getPrecio());
+                    precio += Double.parseDouble(pack[1]);
+                    de.setPrecio(precio);
                     de.setPaquete(pack);
                     Reserva.add(de);
                 } else if (e > 2) {
@@ -164,30 +177,22 @@ public class Reservacion {
         return verificar;
     }
 
-    public boolean verificarHabitacion(String piso, int nHabi) {
-        boolean verificar = false;
+    public String[][] verificarHabitacion(String piso, int nHabi) {
+        String[][] datos = new String[2][2];
         for (Habitacion recorrer : main.habi.habitacion) {
             if (recorrer.getHabit() == nHabi) {
                 if (recorrer.getPiso().equals(piso)) {
-                    if (recorrer.getEstado().equals("Habilitado")) {
-                        verificar = true;
+                    datos[0][0] = recorrer.getEstado();
+                    datos[0][1] = String.valueOf(recorrer.getPrecio());
+                    for(Piso recorrer2: main.pis.Piso){
+                        if(recorrer2.getLetra().equals(recorrer.getPiso())){
+                            datos[1][0] = recorrer2.getEstado();
+                        }
                     }
                 }
             }
         }
-        return verificar;
-    }
-
-    public boolean verificarPiso(String piso) {
-        boolean verificar = false;
-        for (Piso recorrer : main.pis.Piso) {
-            if (recorrer.getLetra().equals(piso)) {
-                if (recorrer.getEstado().equals("Habilitado")) {
-                    verificar = true;
-                }
-            }
-        }
-        return verificar;
+        return datos;
     }
 
     public void mostrar() {
