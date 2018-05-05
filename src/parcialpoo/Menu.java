@@ -35,9 +35,14 @@ public class Menu {
                 iniciarCliente();
                 break;
             case 2:
-                Reservacion p=new Reservacion();
-                p.AgregarReservacion("056120044", 1);
-                p.mostrar();
+                String dui;
+                int dia;
+                System.out.print("Ingrese el dui del cliente: ");
+                dui = leer.next();
+                System.out.print("Ingrese los dias a reservar de la habitacion: ");
+                dia = leer.nextInt();
+                main.reserv.AgregarReservacion(dui, dia);
+                main.reserv.mostrar();
                 break;
             case 3:
                 iniciarPaquete();

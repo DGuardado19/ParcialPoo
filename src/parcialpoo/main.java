@@ -20,7 +20,7 @@ public class main {
     public static Piso pis = new Piso();
     public static Paquetes paque = new Paquetes();
     public static Cliente cl = new Cliente();
-    public static DUI dui=new DUI();
+    public static Reservacion reserv = new Reservacion();
     
     public static void main(String[] args) {
         Menu menu = new Menu();

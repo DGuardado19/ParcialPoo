@@ -16,10 +16,19 @@ public class Reservacion {
     private ArrayList<Reservacion> Reserva = new ArrayList<Reservacion>();
     String dui, piso;
     int ncuarto, dia;
+    double precio;
     String[][] cantidad = new String[1][1];
     String[] paquete = new String[2];
     Scanner leer = new Scanner(System.in);
 
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    
     public String[] getPaquete() {
         return paquete;
     }
@@ -78,47 +87,77 @@ public class Reservacion {
 
     public void AgregarReservacion(String dui, int dia) {
         if (verificarCliente(dui)) {
-            Reservacion de = new Reservacion();
-            de.setDui(dui);
-            de.setDia(dia);
-            int e, paquete;
-            System.out.println(main.paque.paque.get(0).getNombre());
-            System.out.println("Cuantas habitaciones desea reservar? :");
-            e = leer.nextInt();
-            String[] pack = new String[2];
-            if (e <= 2 && e >= 1) {
-                String[][] pato = new String[e][2];
-                for (int i = 0; i < e; i++) {
-                    System.out.println("----------Habitacion "+(i+1)+"----------");
-                    System.out.print("Ingrese el numero de la habitacion :  ");
-                    pato[i][0] = String.valueOf(leer.nextInt());
-                    System.out.print("Ingrese el piso:  ");
-                    pato[i][1] = leer.next();
+            String pregunta;
+            System.out.print("Desea hacer la reservacion a este cliente? (s/n): ");
+            pregunta = leer.next();
+            if (pregunta.equals("s")) {
+                Reservacion de = new Reservacion();
+                de.setDui(dui);
+                de.setDia(dia);
+                int e, paquete;
+                System.out.println(main.paque.paque.get(0).getNombre());
+                System.out.print("Cuantas habitaciones desea reservar? :");
+                e = leer.nextInt();
+                String[] pack = new String[2];
+                if (e <= 2 && e >= 1) {
+                    String[][] pato = new String[e][2];
+                    for (int i = 0; i < e; i++) {
+                        System.out.println("----------Habitacion " + (i + 1) + "----------");
+                        System.out.print("Ingrese el numero de la habitacion :  ");
+                        pato[i][0] = String.valueOf(leer.nextInt());
+                        System.out.print("Ingrese el piso:  ");
+                        pato[i][1] = leer.next();
+                    }
+                    de.setCantidad(pato);
+                    System.out.println("Que paquete desea agregar?");
+                    main.paque.mostrar();
+                    System.out.println("");
+                    System.out.print("Opcion: ");
+                    paquete = leer.nextInt();
+                    pack[0] = main.paque.paque.get(paquete - 1).getNombre();
+                    pack[1] = String.valueOf(main.paque.paque.get(paquete - 1).getPrecio());
+                    de.setPaquete(pack);
+                    Reserva.add(de);
+                }else if(e > 2){
+                    System.err.println("No se puede reservar mas de 2 habitaciones!!!");
                 }
-                de.setCantidad(pato);
-                System.out.println("Que paquete desea agregar?");
-                main.paque.mostrar();
-                System.out.println("");
-                System.out.print("Opcion: ");
-                paquete = leer.nextInt();
-                pack[0] = main.paque.paque.get(paquete - 1).getNombre();
-                pack[1] = String.valueOf(main.paque.paque.get(paquete - 1).getPrecio());
-                de.setPaquete(pack);
-                Reserva.add(de);
+            } else {
+                System.out.print("Ingrese el dui del cliente que quiere: ");
+                dui = leer.next();
+                AgregarReservacion(dui, dia);
             }
-        }else{
+        } else {
             System.err.println("El dui del cliente no existe!");
+            System.out.print("Ingrese un dui existente: ");
+            dui = leer.next();
+            AgregarReservacion(dui, dia);
         }
     }
 
     public boolean verificarCliente(String dui) {
         boolean verificar = false;
+        int cont = 0;
         for (Cliente recorrer : main.cl.clientes) {
             if (recorrer.getDui().equals(dui)) {
+                System.out.println("-----------------------------------------------------------");
+                System.out.println("cliente " + cont);
+                System.out.println("Nombres: " + recorrer.getNombre());
+                System.out.println("Apellidos: " + recorrer.getApellidos());
+                System.out.println("Genero: " + recorrer.getGenero());
+                System.out.println("Telefono: " + recorrer.getTelefono());
+                System.out.println("Direccion: " + recorrer.getDireccion());
+                System.out.println("Targeta: " + recorrer.getTargetacredito());
+                System.out.println("dui: " + recorrer.getDui());
+                System.out.println("----------------------------------------------------------");
+                ++cont;
                 verificar = true;
             }
         }
         return verificar;
+    }
+    
+    public void verificarHabitacionPiso(){
+        
     }
 
     public void mostrar() {
