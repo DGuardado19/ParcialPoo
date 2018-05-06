@@ -16,7 +16,7 @@ import java.util.InputMismatchException;
 public class Paquetes {
 
     public String nombre;
-    public int precio;
+    public double precio;
     public ArrayList<String> Servicio;
     public ArrayList<Paquetes> paque = new ArrayList<>();
     int cont = 0;
@@ -46,16 +46,16 @@ public class Paquetes {
         this.Servicio = Servicio;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return this.precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
     //Agregando paquetes
-    public void agregar(String pa, int pre){
+    public void agregar(String pa, double pre){
         Paquetes paq = new Paquetes();
         ArrayList<String> aux = new ArrayList<String>();
         Scanner input = new Scanner(System.in);
