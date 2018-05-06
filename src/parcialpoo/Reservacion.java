@@ -128,6 +128,7 @@ public class Reservacion {
                     }
                     
                     de.setCantidad(pato);
+                    System.out.println("");
                     System.out.println("Que paquete desea agregar?");
                     main.paque.mostrar();
                     System.out.println("");
@@ -153,11 +154,12 @@ public class Reservacion {
             dui = leer.next();
             AgregarReservacion(dui, dia);
         }
+        System.out.println("");
     }
 
     public boolean verificarCliente(String dui) {
         boolean verificar = false;
-        int cont = 0;
+        int cont = 1;
         for (Cliente recorrer : main.cl.clientes) {
             if (recorrer.getDui().equals(dui)) {
                 System.out.println("-----------------------------------------------------------");

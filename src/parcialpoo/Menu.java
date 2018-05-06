@@ -38,7 +38,7 @@ public class Menu {
                     String dui;
                     int dia;
 
-                    System.out.print("Ingrese los dias a reservar de la habitacion: ");
+                    System.out.print("Ingrese los dias de estadia: ");
                     dia = leer.nextInt();
                     if (dia <= 7) {
                         System.out.print("Ingrese el dui del cliente: ");
