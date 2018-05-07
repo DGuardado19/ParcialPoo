@@ -10,24 +10,37 @@ public class Paquete {
 
     private static Paquete paquete;
 
+    /**
+     * Se ocupa el metodo singleton para no perder los datos y hacerlo mas eficiente
+     * @return 
+     */
     public static Paquete getInstance() {
         if (paquete == null) {
             paquete = new Paquete();
         }
         return paquete;
     }
-
+    /**
+    * Declarando los atributos necesarios.
+    * Se necesitan dos listas. Una para guardar el nombre y el precio
+    * y la otra para guardar los servicios del paquete
+    */
     public String nombre;
     public double precio;
     public ArrayList<String> Servicio;
     public ArrayList<Paquete> paque = new ArrayList<>();
     int cont = 0;
-
+    /**
+     * Creando metodos set y get y constructores necesarios para inicializar
+     * el objeto
+     * @param nombre
+     * @param Servicio 
+     */
     public Paquete(String nombre, ArrayList<String> Servicio) {
         this.nombre = nombre;
         this.Servicio = Servicio;
     }
-
+    //Aca se inicializa el arrayList
     public Paquete() {
         Servicio = new ArrayList<>();
     }
@@ -56,7 +69,15 @@ public class Paquete {
         this.precio = precio;
     }
 
-    //Agregando paquetes
+    /**
+     * Funcion agregar. Toma como parametros el nombre del paquete
+     * y el precio del paquete
+     * @param pa
+     * @param pre 
+     * Funcion necesaria para pedir el nombre del paquete, el precio y los
+     * "N" servicios que tendra el paquete.
+     * Sin retornar nada.
+     */
     public void agregar(String pa, double pre) {
         Paquete paq = new Paquete();
         ArrayList<String> aux = new ArrayList<String>();
@@ -81,6 +102,10 @@ public class Paquete {
         paque.add(paq);
     }
 
+        /**
+         * Metodo mostrar. Se muestran en consola el nombre, precio, el CODIGO del paquete
+         * y los servicios que este tenga
+         */
     public void mostrar() {
         int cont = 1;
         for (Paquete correr : paque) {
@@ -99,14 +124,20 @@ public class Paquete {
         }
     }
 
-    //Eliminando todos los paquetes
+    /**
+     * Eliminar todos los paquetes ya creados
+     */
     public void clear() {
         Servicio.clear();
         paque.clear();
         System.out.println("--- PAQUETES ELIMINADOS ---");
 
     }
-
+    /**
+     * Eliminar paquete pero recibiendo como parametro el CODIGO
+     * del paquete para poder acceder a el.
+     * @param paq 
+     */
     public void EliminarPaquete(int paq) {
         int cont = 1;
         
@@ -122,7 +153,13 @@ public class Paquete {
         }
     }
 
-    //Para agregar un nuevo acceso a una posicion que solicite el usuario
+    /**
+     * Agregar un nuevo servicio al paquete.
+     * Tomando como parametros el CODIGO del paquete y el STRING 
+     * del acceso o servicio nuevo que se agregara
+     * @param numero
+     * @param acceso 
+     */
     public void add(int numero, String acceso) {
         ArrayList<String> aux = new ArrayList<String>();
         Paquete auxi = new Paquete();
