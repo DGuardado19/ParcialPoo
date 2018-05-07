@@ -44,15 +44,14 @@ public class main {
         paque2.setServicio(aux);
         paquete.paque.add(paque2);
         
-        Cliente clien = new Cliente();
-        clien.setNombre("Eduardo");
-        clien.setApellidos("Alberto");
-        clien.setGenero("Masculino");
-        clien.setDireccion("erwrwer");
-        clien.setTargetacredito("234234");
-        clien.setTelefono("wererwe");
-        clien.setDui("056120044");
-        clien.clientes.add(client);
+        client.setNombre("Eduardo");
+        client.setApellidos("Alberto");
+        client.setGenero("Masculino");
+        client.setDireccion("erwrwer");
+        client.setTargetacredito("234234");
+        client.setTelefono("wererwe");
+        client.setDui("056120044");
+        client.clientes.add(client);
         
         menu.iniciar();
     }

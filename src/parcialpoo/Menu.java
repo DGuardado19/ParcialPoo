@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package parcialpoo;
 
 import java.util.ArrayList;
@@ -18,6 +14,7 @@ public class Menu {
     public void iniciar() {
         int opc;
         Scanner leer = new Scanner(System.in);
+        
         System.out.println("---------BIENVENIDO-----------");
         System.out.println("----Hotel Vina Raphiña--------");
         System.out.println("1. Cliente");
@@ -29,23 +26,26 @@ public class Menu {
         System.out.print("Opcion: ");
         opc = leer.nextInt();
         System.out.println("");
+        
         try {
             switch (opc) {
                 case 1:
                     iniciarCliente();
                     break;
                 case 2:
+                    Reservacion reservar = Reservacion.getInstance();
                     String dui;
                     int dia;
-                    Reservacion reservar = Reservacion.getInstance();
-
                     System.out.print("Ingrese los dias de estadia: ");
                     dia = leer.nextInt();
+                    
                     if (dia <= 7) {
                         System.out.print("Ingrese el dui del cliente: ");
                         dui = leer.next();
+                        
                         reservar.AgregarReservacion(dui, dia);
                         reservar.mostrar();
+                        
                         iniciar();
                     } else {
                         System.err.println("No se puede reservar mas de 7 dias!!!");
@@ -133,13 +133,15 @@ public class Menu {
     }
 
     public void iniciarCliente() {
+        Cliente client = Cliente.getInstance();
         int opc = 6;
         Scanner input = new Scanner(System.in);
-        Cliente client = Cliente.getInstance();
+
         while (opc != 5) {
             menuCliente();
             System.out.print("Opcion: ");
             opc = input.nextInt();
+            
             try {
                 switch (opc) {
                     case 1:
@@ -157,6 +159,7 @@ public class Menu {
                         System.out.println("");
                         System.out.println("Ingrese el codigo del cliente para eliminarlo: ");
                         po = input.nextInt();
+                        
                         client.eliminarcliente(po);
                         System.out.println("");
                         break;
@@ -184,12 +187,14 @@ public class Menu {
     }
 
     public void iniciarPiso() {
-        int opc = 6;
         Piso piso = Piso.getInstance();
+        int opc = 6;
         Scanner leer = new Scanner(System.in);
+        
         while (opc != 5) {
             menuPiso();
             opc = leer.nextInt();
+            
             try {
                 switch (opc) {
                     case 1:
@@ -248,12 +253,14 @@ public class Menu {
     }
 
     public void iniciarHabitacion() {
-        int opc = 6;
         Habitacion habit = Habitacion.getInstance();
+        int opc = 6;
         Scanner leer = new Scanner(System.in);
+        
         while (opc != 5) {
             menuHabitacion();
             opc = leer.nextInt();
+            
             try {
                 switch (opc) {
                     case 1:
@@ -337,16 +344,19 @@ public class Menu {
             try {
                 System.out.print("Opcion: ");
                 opcion = input.nextInt();
+                
                 switch (opcion) {
                     case 1:
                         Scanner input2 = new Scanner(System.in);
                         String a;
                         int b;
+                        
                         System.out.println("Ingrese el nombre del paquete: ");
                         a = input2.nextLine();
                         System.out.println("Ingrese el precio del paquete: ");
                         System.out.print("$");
                         b = input2.nextInt();
+                        
                         paquete.agregar(a, b);
                         break;
                     case 2:
@@ -365,10 +375,12 @@ public class Menu {
                         Scanner entra = new Scanner(System.in);
                         int opr;
                         String acc;
+                        
                         System.out.println("Ingrese la posicion donde agregara el acceso: ");
                         opr = entra.nextInt();
                         System.out.println("Ingrese el acceso nuevo: ");
                         acc = entra.next();
+                        
                         paquete.add(opr, acc);
                         break;
                     case 6:
@@ -382,7 +394,7 @@ public class Menu {
 
                 }
             } catch (InputMismatchException hola) {
-                System.err.println("INGRESE UN NUMERO, NO UN CARACTER, TONTO");
+                System.err.println("INGRESE UN NUMERO, NO UN CARACTER");
                 input.next();
                 iniciarPaquete();
             }

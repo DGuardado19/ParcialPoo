@@ -12,11 +12,15 @@ import java.util.*;
  * @author DGuardado <david.guardado at guardado.org>
  */
 public class Cliente extends DUI {
-    
+
+    private Cliente() {
+        clientes = new ArrayList<>();
+    }
+
     private static Cliente client;
-    
-    public static Cliente getInstance(){
-        if(client == null){
+
+    public static Cliente getInstance() {
+        if (client == null) {
             client = new Cliente();
         }
         return client;
@@ -24,10 +28,6 @@ public class Cliente extends DUI {
 
     private String nombre, apellidos, dui, genero, telefono, direccion, targetacredito;
     public ArrayList<Cliente> clientes;
-
-    public Cliente() {
-        clientes = new ArrayList<>();
-    }
 
     public String getNombre() {
         return nombre;
@@ -86,7 +86,7 @@ public class Cliente extends DUI {
     }
 
     public void add() {
-        Cliente p1 = new Cliente();
+        Cliente p1 = Cliente.getInstance();
         clientes.add(p1);
         DUI d = new DUI();
         String dui;
@@ -106,12 +106,12 @@ public class Cliente extends DUI {
         p1.setTargetacredito(input.nextLine());
         System.out.print("Ingrese el dui: ");
         dui = leer.next();
-        
-        while(!d.PedirD(dui)){
+
+        while (!d.PedirD(dui)) {
             System.out.print("Ingrese un dui valido: ");
             dui = leer.next();
         }
-        
+
         p1.setDui(dui);
     }
 
