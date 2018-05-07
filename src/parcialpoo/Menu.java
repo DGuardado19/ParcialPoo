@@ -134,6 +134,7 @@ public class Menu {
     public void iniciarCliente() {
         int opc = 6;
         Scanner input = new Scanner(System.in);
+        Cliente client = Cliente.getInstance();
         while (opc != 5) {
             menuCliente();
             System.out.print("Opcion: ");
@@ -142,12 +143,12 @@ public class Menu {
                 switch (opc) {
                     case 1:
                         System.out.println("");
-                        main.cl.add();
+                        client.add();
                         System.out.println("");
                         break;
                     case 2:
                         System.out.println("");
-                        main.cl.clear();
+                        client.clear();
                         System.out.println("");
                         break;
                     case 3:
@@ -155,12 +156,12 @@ public class Menu {
                         System.out.println("");
                         System.out.println("Ingrese el codigo del cliente para eliminarlo: ");
                         po = input.nextInt();
-                        main.cl.eliminarcliente(po);
+                        client.eliminarcliente(po);
                         System.out.println("");
                         break;
                     case 4:
                         System.out.println("");
-                        main.cl.mostrar();
+                        client.mostrar();
                         System.out.println("");
                         break;
                     case 5:

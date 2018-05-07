@@ -155,7 +155,8 @@ public class Reservacion {
     public boolean verificarCliente(String dui) {
         boolean verificar = false;
         int cont = 1;
-        for (Cliente recorrer : main.cl.clientes) {
+        Cliente client = Cliente.getInstance();
+        for (Cliente recorrer : client.clientes) {
             if (recorrer.getDui().equals(dui)) {
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("cliente " + cont);

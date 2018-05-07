@@ -17,7 +17,6 @@ public class main {
      * @param args the command line arguments
      */
     
-    public static Cliente cl = new Cliente();
     public static Reservacion reserv = new Reservacion();
     
     public static void main(String[] args) {
@@ -26,6 +25,7 @@ public class main {
         Piso piso = Piso.getInstance();
         Habitacion habit = Habitacion.getInstance();
         Paquete paquete = Paquete.getInstance();
+        Cliente client = Cliente.getInstance();
         
         piso.agregarPiso("A");
         piso.agregarPiso("B");
@@ -46,15 +46,15 @@ public class main {
         paque2.setServicio(aux);
         paquete.paque.add(paque2);
         
-        Cliente client = new Cliente();
-        client.setNombre("Eduardo");
-        client.setApellidos("Alberto");
-        client.setGenero("Masculino");
-        client.setDireccion("erwrwer");
-        client.setTargetacredito("234234");
-        client.setTelefono("wererwe");
-        client.setDui("056120044");
-        cl.clientes.add(client);
+        Cliente clien = new Cliente();
+        clien.setNombre("Eduardo");
+        clien.setApellidos("Alberto");
+        clien.setGenero("Masculino");
+        clien.setDireccion("erwrwer");
+        clien.setTargetacredito("234234");
+        clien.setTelefono("wererwe");
+        clien.setDui("056120044");
+        clien.clientes.add(client);
         
         menu.iniciar();
     }

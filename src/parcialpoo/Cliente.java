@@ -12,6 +12,15 @@ import java.util.*;
  * @author DGuardado <david.guardado at guardado.org>
  */
 public class Cliente extends DUI {
+    
+    private static Cliente client;
+    
+    public static Cliente getInstance(){
+        if(client == null){
+            client = new Cliente();
+        }
+        return client;
+    }
 
     private String nombre, apellidos, dui, genero, telefono, direccion, targetacredito;
     public ArrayList<Cliente> clientes;
