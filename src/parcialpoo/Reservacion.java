@@ -12,16 +12,16 @@ import java.util.*;
  * @author DGuardado <david.guardado at guardado.org>
  */
 public class Reservacion {
-    
+
     private static Reservacion reservar;
-    
-    public static Reservacion getInstance(){
-        if(reservar == null){
+
+    public static Reservacion getInstance() {
+        if (reservar == null) {
             reservar = new Reservacion();
         }
         return reservar;
     }
-    
+
     private ArrayList<Reservacion> Reserva = new ArrayList<Reservacion>();
     String dui, piso;
     int dia;
@@ -89,26 +89,29 @@ public class Reservacion {
     public void AgregarReservacion(String dui, int dia) {
         if (verificarCliente(dui)) {
             Habitacion habit = Habitacion.getInstance();
+            Paquete paque = Paquete.getInstance();
+            Reservacion reserv = Reservacion.getInstance();
             String pregunta;
+            
             System.out.print("Desea hacer la reservacion a este cliente? (s/n): ");
             pregunta = leer.next();
-            Paquete paque = Paquete.getInstance();
-            
+
             if (pregunta.equals("s")) {
-                Reservacion de = new Reservacion();
-                de.setDui(dui);
-                de.setDia(dia);
                 int e, paquete;
                 double precio = 0.0;
                 
+                reserv.setDui(dui);
+                reserv.setDia(dia);
+                
+                String[] pack = new String[2];
+
                 System.out.print("Cuantas habitaciones desea reservar? :");
                 e = leer.nextInt();
-                String[] pack = new String[2];
-                
+
                 if (e <= 2 && e >= 1) {
                     String[][] pato = new String[e][3];
                     String[][] datos = new String[2][2];
-                    
+
                     for (int i = 0; i < e; i++) {
                         System.out.println("----------Habitacion " + (i + 1) + "----------");
                         System.out.print("Ingrese el numero de la habitacion :  ");
@@ -117,7 +120,7 @@ public class Reservacion {
                         pato[i][1] = leer.next();
                         datos = verificarHabitacion(pato[i][1], Integer.parseInt(pato[i][0]));
                         pato[i][2] = datos[0][1];
-                        
+
                         if (datos[1][0].equals("Habilitado")) {
                             if (!datos[0][0].equals("Habilitado")) {
                                 System.err.println("La habitacion esta inhabilitado y/o reservado!!!");
@@ -127,23 +130,26 @@ public class Reservacion {
                             System.err.println("El piso esta inhabilitado!!!");
                             --i;
                         }
-                        precio += dia*(Double.parseDouble(datos[0][1]));
+                        precio += dia * (Double.parseDouble(datos[0][1]));
                         habit.modificarHabitacionEstado(pato[i][1], Integer.parseInt(pato[i][0]), 3);
                     }
-                    
-                    de.setCantidad(pato);
+
+                    reserv.setCantidad(pato);
                     System.out.println("");
                     System.out.println("Que paquete desea agregar?");
+                    
                     paque.mostrar();
                     System.out.println("");
                     System.out.print("Opcion: ");
                     paquete = leer.nextInt();
+                    
                     pack[0] = paque.paque.get(paquete - 1).getNombre();
                     pack[1] = String.valueOf(paque.paque.get(paquete - 1).getPrecio());
                     precio += Double.parseDouble(pack[1]);
-                    de.setPrecio(precio);
-                    de.setPaquete(pack);
-                    Reserva.add(de);
+                    reserv.setPrecio(precio);
+                    reserv.setPaquete(pack);
+                    
+                    Reserva.add(reserv);
                 } else if (e > 2) {
                     System.err.println("No se puede reservar mas de 2 habitaciones!!!");
                 }
@@ -162,9 +168,10 @@ public class Reservacion {
     }
 
     public boolean verificarCliente(String dui) {
+        Cliente client = Cliente.getInstance();
         boolean verificar = false;
         int cont = 1;
-        Cliente client = Cliente.getInstance();
+        
         for (Cliente recorrer : client.clientes) {
             if (recorrer.getDui().equals(dui)) {
                 System.out.println("-----------------------------------------------------------");
@@ -193,8 +200,8 @@ public class Reservacion {
                 if (recorrer.getPiso().equals(piso)) {
                     datos[0][0] = recorrer.getEstado();
                     datos[0][1] = String.valueOf(recorrer.getPrecio());
-                    for(Piso recorrer2: pis.Piso){
-                        if(recorrer2.getLetra().equals(recorrer.getPiso())){
+                    for (Piso recorrer2 : pis.Piso) {
+                        if (recorrer2.getLetra().equals(recorrer.getPiso())) {
                             datos[1][0] = recorrer2.getEstado();
                         }
                     }
@@ -207,20 +214,20 @@ public class Reservacion {
     public void mostrar() {
         for (Reservacion recorrer : Reserva) {
             System.out.println("--------------------------------------------");
-            System.out.println("DUI del cliente: "+recorrer.getDui());
-            System.out.println("Dias de estadia: "+recorrer.getDia());
+            System.out.println("DUI del cliente: " + recorrer.getDui());
+            System.out.println("Dias de estadia: " + recorrer.getDia());
             System.out.println("-- Habitaciones reservada --");
             for (int i = 0; i < recorrer.getCantidad().length; i++) {
                 System.out.print(recorrer.getCantidad()[i][0]);
-                System.out.print(recorrer.getCantidad()[i][1]+" --- Precio por noche: "+recorrer.getCantidad()[i][2]);
+                System.out.print(recorrer.getCantidad()[i][1] + " --- Precio por noche: " + recorrer.getCantidad()[i][2]);
             }
             System.out.println("");
             System.out.println("-- Paquete elegido --");
             for (int j = 0; j < recorrer.getPaquete().length; j++) {
-                System.out.print(recorrer.getPaquete()[j]+"   ");
+                System.out.print(recorrer.getPaquete()[j] + "   ");
             }
             System.out.println("");
-            System.out.println("Total: "+recorrer.getPrecio());
+            System.out.println("Total: " + recorrer.getPrecio());
             System.out.println("--------------------------------------------");
         }
     }

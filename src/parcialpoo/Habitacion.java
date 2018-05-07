@@ -71,17 +71,17 @@ public class Habitacion {
         Piso piso = Piso.getInstance();
         Habitacion ha = new Habitacion();
         ha.setPrecio(precio);
-        
+
         if (piso.verificarPiso(letra)) {
             ha.setPiso(letra);
             ha.setHabit(Nhabitacion);
-            
+
             if (Nhabitacion % 2 == 0) {
                 ha.setTipo("Doble");
             } else {
                 ha.setTipo("Sencilla");
             }
-            
+
             switch (estado) {
                 case 1:
                     ha.setEstado("Habilitado");
@@ -95,7 +95,7 @@ public class Habitacion {
                 default:
                     break;
             }
-            
+
             habitacion.add(ha);
         } else {
             System.err.println("El piso seleccionado no existe!");
@@ -106,7 +106,7 @@ public class Habitacion {
         Habitacion h = new Habitacion();
         boolean verificar = false;
         int cont = 0, aux = 0;
-        
+
         for (Habitacion recorrer : habitacion) {
             if (recorrer.getPiso().equals(piso)) {
                 if (recorrer.getHabit() == nHabi) {
@@ -116,13 +116,13 @@ public class Habitacion {
             }
             ++cont;
         }
-        
+
         if (verificar == true) {
             h.setHabit(habitacion.get(aux).getHabit());
             h.setPrecio(habitacion.get(aux).getPrecio());
             h.setTipo(habitacion.get(aux).getTipo());
             h.setPiso(habitacion.get(aux).getPiso());
-            
+
             switch (estado) {
                 case 1:
                     h.setEstado("Habilitado");
@@ -136,7 +136,7 @@ public class Habitacion {
                 default:
                     break;
             }
-            
+
             habitacion.add(aux, h);
             habitacion.remove(aux + 1);
         } else {
@@ -149,7 +149,7 @@ public class Habitacion {
         int cont = 0, cont2 = 0;
         int nh = habit.verificarExistenciaHabitacionesEnPiso(lPiso);
         int[] arreglo = new int[nh];
-        
+
         for (Habitacion recorrer : habitacion) {
             if (recorrer.getPiso().equals(lPiso)) {
                 System.out.println(cont - cont2);
@@ -158,7 +158,7 @@ public class Habitacion {
             }
             ++cont;
         }
-        
+
         for (int i = 0; i < nh; ++i) {
             habitacion.remove(arreglo[i]);
         }
@@ -167,7 +167,7 @@ public class Habitacion {
     public void eliminarHabitacion(String piso, int numero) {
         boolean verificar = false;
         int cont = 0, aux = 0;
-        
+
         for (Habitacion recorrer : habitacion) {
             if (recorrer.getPiso().equals(piso)) {
                 if (recorrer.getHabit() == numero) {
@@ -177,7 +177,7 @@ public class Habitacion {
             }
             ++cont;
         }
-        
+
         if (verificar == true) {
             habitacion.remove(aux);
         } else {
@@ -199,13 +199,13 @@ public class Habitacion {
 
     public int verificarExistenciaHabitacionesEnPiso(String letra) {
         int cont = 0;
-        
+
         for (Habitacion recorrer : habitacion) {
             if (recorrer.getPiso().equals(letra)) {
                 ++cont;
             }
         }
-        
+
         return cont;
     }
 }
