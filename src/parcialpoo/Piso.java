@@ -10,6 +10,15 @@ import java.util.Scanner;
  */
 public class Piso{
     
+    private static Piso piso;
+    
+    public static Piso getInstance(){
+        if(piso == null){
+            piso = new Piso();
+        }
+        return piso;
+    }
+    
     public Piso(){
         Piso = new ArrayList<>();
     }

@@ -174,12 +174,13 @@ public class Reservacion {
 
     public String[][] verificarHabitacion(String piso, int nHabi) {
         String[][] datos = new String[2][2];
+        Piso pis = Piso.getInstance();
         for (Habitacion recorrer : main.habi.habitacion) {
             if (recorrer.getHabit() == nHabi) {
                 if (recorrer.getPiso().equals(piso)) {
                     datos[0][0] = recorrer.getEstado();
                     datos[0][1] = String.valueOf(recorrer.getPrecio());
-                    for(Piso recorrer2: main.pis.Piso){
+                    for(Piso recorrer2: pis.Piso){
                         if(recorrer2.getLetra().equals(recorrer.getPiso())){
                             datos[1][0] = recorrer2.getEstado();
                         }

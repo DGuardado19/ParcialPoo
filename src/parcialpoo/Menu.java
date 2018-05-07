@@ -183,6 +183,7 @@ public class Menu {
 
     public void iniciarPiso() {
         int opc = 6;
+        Piso piso = Piso.getInstance();
         Scanner leer = new Scanner(System.in);
         while (opc != 5) {
             menuPiso();
@@ -196,12 +197,12 @@ public class Menu {
                         System.out.print("Escriba la letra del piso: ");
                         letra = leer.next();
 
-                        main.pis.agregarPiso(letra);
+                        piso.agregarPiso(letra);
                         System.out.println("");
                         break;
                     case 2:
                         System.out.println("");
-                        main.pis.mostrarPiso();
+                        piso.mostrarPiso();
                         System.out.println("");
                         break;
                     case 3:
@@ -214,7 +215,7 @@ public class Menu {
                         System.out.print("Escribe el estado del piso (1-Habilitado, 2-Desabilitado, 3-Reservado): ");
                         Estado = leer.nextInt();
 
-                        main.pis.modificarPisoEstado(Lpiso, Estado);
+                        piso.modificarPisoEstado(Lpiso, Estado);
                         System.out.println("");
                         break;
                     case 4:
@@ -224,7 +225,7 @@ public class Menu {
                         System.out.print("Escribe la letra del piso a eliminar: ");
                         Lpiso2 = leer.next();
 
-                        main.pis.eliminarPiso(Lpiso2);
+                        piso.eliminarPiso(Lpiso2);
                         System.out.println("");
                         break;
                     case 5:

@@ -63,7 +63,8 @@ public class Habitacion {
     public void agregarHabitacion(int Nhabitacion, double precio, String letra, int estado) {
         Habitacion ha = new Habitacion();
         ha.setPrecio(precio);
-        if (main.pis.verificarPiso(letra)) {
+        Piso piso = Piso.getInstance();
+        if (piso.verificarPiso(letra)) {
             ha.setPiso(letra);
             ha.setHabit(Nhabitacion);
             if (Nhabitacion % 2 == 0) {
