@@ -13,7 +13,10 @@ import java.util.Scanner;
  *
  * @author RobertoHer
  */
-public class Fecha {    
+public class Fecha { 
+    /**
+     * Inicializando. Es el constructor vacio 
+     */
    public Fecha(){
        
    }
