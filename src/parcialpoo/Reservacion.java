@@ -15,9 +15,9 @@ public class Reservacion {
 
     private ArrayList<Reservacion> Reserva = new ArrayList<Reservacion>();
     String dui, piso;
-    int ncuarto, dia;
+    int dia;
     double precio;
-    String[][] cantidad = new String[1][1];
+    String[][] cantidad = new String[2][2];
     String[] paquete = new String[2];
     Scanner leer = new Scanner(System.in);
 
@@ -51,14 +51,6 @@ public class Reservacion {
 
     public void setPiso(String piso) {
         this.piso = piso;
-    }
-
-    public int getNcuarto() {
-        return ncuarto;
-    }
-
-    public void setNcuarto(int ncuarto) {
-        this.ncuarto = ncuarto;
     }
 
     public String[][] getCantidad() {
@@ -103,7 +95,7 @@ public class Reservacion {
                 String[] pack = new String[2];
                 
                 if (e <= 2 && e >= 1) {
-                    String[][] pato = new String[e][2];
+                    String[][] pato = new String[e][3];
                     String[][] datos = new String[2][2];
                     
                     for (int i = 0; i < e; i++) {
@@ -113,6 +105,7 @@ public class Reservacion {
                         System.out.print("Ingrese el piso:  ");
                         pato[i][1] = leer.next();
                         datos = verificarHabitacion(pato[i][1], Integer.parseInt(pato[i][0]));
+                        pato[i][2] = datos[0][1];
                         
                         if (datos[1][0].equals("Habilitado")) {
                             if (!datos[0][0].equals("Habilitado")) {
@@ -199,15 +192,22 @@ public class Reservacion {
 
     public void mostrar() {
         for (Reservacion recorrer : Reserva) {
-            System.out.println(recorrer.getDui());
-            System.out.println(recorrer.getNcuarto());
+            System.out.println("--------------------------------------------");
+            System.out.println("DUI del cliente: "+recorrer.getDui());
+            System.out.println("Dias de estadia: "+recorrer.getDia());
+            System.out.println("-- Habitaciones reservada --");
             for (int i = 0; i < recorrer.getCantidad().length; i++) {
-                System.out.println(recorrer.getCantidad()[i][0]);
-                System.out.println(recorrer.getCantidad()[i][1]);
+                System.out.print(recorrer.getCantidad()[i][0]);
+                System.out.print(recorrer.getCantidad()[i][1]+" --- Precio por noche: "+recorrer.getCantidad()[i][2]);
             }
+            System.out.println("");
+            System.out.println("-- Paquete elegido --");
             for (int j = 0; j < recorrer.getPaquete().length; j++) {
-                System.out.println(recorrer.getPaquete()[j]);
+                System.out.print(recorrer.getPaquete()[j]+"   ");
             }
+            System.out.println("");
+            System.out.println("Total: "+recorrer.getPrecio());
+            System.out.println("--------------------------------------------");
         }
     }
 }

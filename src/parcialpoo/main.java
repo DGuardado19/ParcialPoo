@@ -44,6 +44,16 @@ public class main {
         paque2.setServicio(aux);
         paque.paque.add(paque2);
         
+        Cliente client = new Cliente();
+        client.setNombre("Eduardo");
+        client.setApellidos("Alberto");
+        client.setGenero("Masculino");
+        client.setDireccion("erwrwer");
+        client.setTargetacredito("234234");
+        client.setTelefono("wererwe");
+        client.setDui("056120044");
+        cl.clientes.add(client);
+        
         menu.iniciar();
     }
 

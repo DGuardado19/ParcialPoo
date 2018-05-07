@@ -44,8 +44,9 @@ public class Menu {
                         System.out.print("Ingrese el dui del cliente: ");
                         dui = leer.next();
                         main.reserv.AgregarReservacion(dui, dia);
+                        main.reserv.mostrar();
                         iniciar();
-                    }else{
+                    } else {
                         System.err.println("No se puede reservar mas de 7 dias!!!");
                         iniciar();
                     }
@@ -112,6 +113,22 @@ public class Menu {
         System.out.println("4.Eliminar Piso");
         System.out.println("5.Regresar");
         System.out.print("Opcion: ");
+    }
+
+    private void menuReservacion() {
+        System.out.println("---------- Menu Reservacion ----------");
+        System.out.println("1.Hacer nueva reservacion");
+        System.out.println("2.Mostrar Reservaciones");
+        System.out.println("3.Regresar");
+        System.out.print("Opcion: ");
+    }
+
+    public void iniciarReservacion() {
+        int opc = 4;
+        Scanner leer = new Scanner(System.in);
+        while (opc != 3) {
+
+        }
     }
 
     public void iniciarCliente() {
