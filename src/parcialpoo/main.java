@@ -16,7 +16,7 @@ public class main {
     /**
      * @param args the command line arguments
      */
-    public static Habitacion habi = new Habitacion();
+    
     public static Paquetes paque = new Paquetes();
     public static Cliente cl = new Cliente();
     public static Reservacion reserv = new Reservacion();
@@ -25,6 +25,7 @@ public class main {
         Menu menu = new Menu();
         
         Piso piso = Piso.getInstance();
+        Habitacion habit = Habitacion.getInstance();
         
         piso.agregarPiso("A");
         piso.agregarPiso("B");
@@ -32,10 +33,10 @@ public class main {
         piso.agregarPiso("D");
         piso.agregarPiso("E");
         
-        habi.agregarHabitacion(2, 30, "A", 1);
-        habi.agregarHabitacion(1, 24, "A", 2);
-        habi.agregarHabitacion(4, 50, "A", 1);
-        habi.agregarHabitacion(4, 50, "B", 1);
+        habit.agregarHabitacion(2, 30, "A", 1);
+        habit.agregarHabitacion(1, 24, "A", 2);
+        habit.agregarHabitacion(4, 50, "A", 1);
+        habit.agregarHabitacion(4, 50, "B", 1);
         
         Paquetes paque2 = new Paquetes();
         paque2.setNombre("Basico");

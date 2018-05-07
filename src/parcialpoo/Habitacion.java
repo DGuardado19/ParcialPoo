@@ -11,6 +11,15 @@ public class Habitacion {
     public Habitacion() {
 
     }
+    
+    private static Habitacion habi;
+    
+    public static Habitacion getInstance(){
+        if(habi == null){
+            habi = new Habitacion();
+        }
+        return habi;
+    }
 
     public ArrayList<Habitacion> habitacion = new ArrayList<Habitacion>();
 
@@ -131,7 +140,8 @@ public class Habitacion {
 
     public void eliminarHabitacionDePiso(String lPiso) {
         int cont = 0, cont2 = 0;
-        int nh = main.habi.verificarExistenciaHabitacionesEnPiso(lPiso);
+        Habitacion habit = getInstance();
+        int nh = habit.verificarExistenciaHabitacionesEnPiso(lPiso);
         int[] arreglo = new int[nh];
         for (Habitacion recorrer : habitacion) {
             if (recorrer.getPiso().equals(lPiso)) {

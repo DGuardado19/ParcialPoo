@@ -247,6 +247,7 @@ public class Menu {
 
     public void iniciarHabitacion() {
         int opc = 6;
+        Habitacion habit = Habitacion.getInstance();
         Scanner leer = new Scanner(System.in);
         while (opc != 5) {
             menuHabitacion();
@@ -269,12 +270,12 @@ public class Menu {
                         System.out.print("Escribe el estado (1-Habilitado, 2-Desabilitado, 3-Reservado): ");
                         estado = leer.nextInt();
 
-                        main.habi.agregarHabitacion(numeroH, precio, letra, estado);
+                        habit.agregarHabitacion(numeroH, precio, letra, estado);
                         System.out.println("");
                         break;
                     case 2:
                         System.out.println("");
-                        main.habi.mostrarHabitaciones();
+                        habit.mostrarHabitaciones();
                         System.out.println("");
                         break;
                     case 3:
@@ -290,7 +291,7 @@ public class Menu {
                         System.out.print("Ingrese el estado de la habitación: ");
                         estadoH = leer.nextInt();
 
-                        main.habi.modificarHabitacionEstado(letra2, numeroH2, estadoH);
+                        habit.modificarHabitacionEstado(letra2, numeroH2, estadoH);
                         System.out.println("");
                         break;
                     case 4:
@@ -303,7 +304,7 @@ public class Menu {
                         System.out.print("Escriba la letra del piso: ");
                         letra3 = leer.next();
 
-                        main.habi.eliminarHabitacion(letra3, numeroH3);
+                        habit.eliminarHabitacion(letra3, numeroH3);
                         System.out.println("");
                         break;
                     case 5:

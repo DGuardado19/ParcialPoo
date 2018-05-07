@@ -79,6 +79,7 @@ public class Reservacion {
 
     public void AgregarReservacion(String dui, int dia) {
         if (verificarCliente(dui)) {
+            Habitacion habit = Habitacion.getInstance();
             String pregunta;
             System.out.print("Desea hacer la reservacion a este cliente? (s/n): ");
             pregunta = leer.next();
@@ -117,7 +118,7 @@ public class Reservacion {
                             --i;
                         }
                         precio += dia*(Double.parseDouble(datos[0][1]));
-                        main.habi.modificarHabitacionEstado(pato[i][1], Integer.parseInt(pato[i][0]), 3);
+                        habit.modificarHabitacionEstado(pato[i][1], Integer.parseInt(pato[i][0]), 3);
                     }
                     
                     de.setCantidad(pato);
@@ -175,7 +176,8 @@ public class Reservacion {
     public String[][] verificarHabitacion(String piso, int nHabi) {
         String[][] datos = new String[2][2];
         Piso pis = Piso.getInstance();
-        for (Habitacion recorrer : main.habi.habitacion) {
+        Habitacion habit = Habitacion.getInstance();
+        for (Habitacion recorrer : habit.habitacion) {
             if (recorrer.getHabit() == nHabi) {
                 if (recorrer.getPiso().equals(piso)) {
                     datos[0][0] = recorrer.getEstado();

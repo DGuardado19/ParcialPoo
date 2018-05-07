@@ -72,6 +72,7 @@ public class Piso{
     
     public void eliminarPiso(String Lpiso){       
         int cont = 0, aux = 0;
+        Habitacion habit = Habitacion.getInstance();
         for(Piso recorrer: Piso){
             if(recorrer.getLetra().equals(Lpiso)){
                 aux = cont;
@@ -80,12 +81,12 @@ public class Piso{
         }
         
         String respuesta;
-        int nh = main.habi.verificarExistenciaHabitacionesEnPiso(Piso.get(aux).getLetra());
+        int nh = habit.verificarExistenciaHabitacionesEnPiso(Piso.get(aux).getLetra());
         Scanner leer = new Scanner(System.in);
         System.out.print("Desea eliminar "+nh+" habitaciones?(s/n): ");
         respuesta = leer.next();
         if("s".equals(respuesta)){
-            main.habi.eliminarHabitacionDePiso(Piso.get(aux).getLetra());
+            habit.eliminarHabitacionDePiso(Piso.get(aux).getLetra());
             Piso.remove(aux);
         }else{
             System.err.println("CANCELADO!!!");
