@@ -37,14 +37,15 @@ public class Menu {
                 case 2:
                     String dui;
                     int dia;
+                    Reservacion reservar = Reservacion.getInstance();
 
                     System.out.print("Ingrese los dias de estadia: ");
                     dia = leer.nextInt();
                     if (dia <= 7) {
                         System.out.print("Ingrese el dui del cliente: ");
                         dui = leer.next();
-                        main.reserv.AgregarReservacion(dui, dia);
-                        main.reserv.mostrar();
+                        reservar.AgregarReservacion(dui, dia);
+                        reservar.mostrar();
                         iniciar();
                     } else {
                         System.err.println("No se puede reservar mas de 7 dias!!!");

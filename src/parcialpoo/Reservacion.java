@@ -12,7 +12,16 @@ import java.util.*;
  * @author DGuardado <david.guardado at guardado.org>
  */
 public class Reservacion {
-
+    
+    private static Reservacion reservar;
+    
+    public static Reservacion getInstance(){
+        if(reservar == null){
+            reservar = new Reservacion();
+        }
+        return reservar;
+    }
+    
     private ArrayList<Reservacion> Reserva = new ArrayList<Reservacion>();
     String dui, piso;
     int dia;
