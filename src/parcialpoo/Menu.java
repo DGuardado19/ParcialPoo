@@ -328,6 +328,7 @@ public class Menu {
     public void iniciarPaquete() {
         int opcion = 7;
         Scanner input = new Scanner(System.in);
+        Paquete paquete = Paquete.getInstance();
 
         while (opcion != 6) {
             menuPaquete();
@@ -344,19 +345,19 @@ public class Menu {
                         System.out.println("Ingrese el precio del paquete: ");
                         System.out.print("$");
                         b = input2.nextInt();
-                        main.paque.agregar(a, b);
+                        paquete.agregar(a, b);
                         break;
                     case 2:
-                        main.paque.mostrar();
+                        paquete.mostrar();
                         break;
                     case 3:
                         int ak;
                         System.out.println("Ingrese el codigo del paquete a eliminar: ");
                         ak = input.nextInt();
-                        main.paque.EliminarPaquete(ak);
+                        paquete.EliminarPaquete(ak);
                         break;
                     case 4:
-                        main.paque.clear();
+                        paquete.clear();
                         break;
                     case 5:
                         Scanner entra = new Scanner(System.in);
@@ -366,7 +367,7 @@ public class Menu {
                         opr = entra.nextInt();
                         System.out.println("Ingrese el acceso nuevo: ");
                         acc = entra.next();
-                        main.paque.add(opr, acc);
+                        paquete.add(opr, acc);
                         break;
                     case 6:
                         System.out.println("Volviendo al menu principal...");

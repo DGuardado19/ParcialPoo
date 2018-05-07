@@ -83,6 +83,7 @@ public class Reservacion {
             String pregunta;
             System.out.print("Desea hacer la reservacion a este cliente? (s/n): ");
             pregunta = leer.next();
+            Paquete paque = Paquete.getInstance();
             
             if (pregunta.equals("s")) {
                 Reservacion de = new Reservacion();
@@ -124,12 +125,12 @@ public class Reservacion {
                     de.setCantidad(pato);
                     System.out.println("");
                     System.out.println("Que paquete desea agregar?");
-                    main.paque.mostrar();
+                    paque.mostrar();
                     System.out.println("");
                     System.out.print("Opcion: ");
                     paquete = leer.nextInt();
-                    pack[0] = main.paque.paque.get(paquete - 1).getNombre();
-                    pack[1] = String.valueOf(main.paque.paque.get(paquete - 1).getPrecio());
+                    pack[0] = paque.paque.get(paquete - 1).getNombre();
+                    pack[1] = String.valueOf(paque.paque.get(paquete - 1).getPrecio());
                     precio += Double.parseDouble(pack[1]);
                     de.setPrecio(precio);
                     de.setPaquete(pack);
