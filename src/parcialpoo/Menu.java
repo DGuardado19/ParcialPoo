@@ -49,14 +49,14 @@ public class Menu {
                     iniciar();
                     break;
             }
-        } catch (InputMismatchException hollis) {
+        } catch (InputMismatchException E) {
             System.err.println("INGRESE UN NUMERO, NO UN CARACTER");
             leer.next();
         }
     }
 
     private void menuCliente() {
-        System.out.println("--- MENU DE CLIENTES ---");
+        System.out.println("------- MENU DE CLIENTES -------");
         System.out.println("1.Agregar un cliente");
         System.out.println("2.Eliminar todos los clientes");
         System.out.println("3.Eliminar un cliente");
@@ -66,7 +66,7 @@ public class Menu {
     }
 
     private void menuPaquete() {
-        System.out.println("----- MENU DE PAQUETES -----");
+        System.out.println("------- MENU DE PAQUETES -------");
         System.out.println("1.Agregar nuevo paquete");
         System.out.println("2.Mostrar paquetes");
         System.out.println("3.Eliminar un paquete");
@@ -76,7 +76,7 @@ public class Menu {
     }
 
     private void menuHabitacion() {
-        System.out.println("----- Menu Habitacion -----");
+        System.out.println("------- MENU HABITACION -------");
         System.out.println("1.Agregar Habitacion");
         System.out.println("2.Mostrar Habitaciones");
         System.out.println("3.Modificar Estado de Habitacion");
@@ -86,7 +86,7 @@ public class Menu {
     }
 
     private void menuPiso() {
-        System.out.println("---------- Menu Piso ----------");
+        System.out.println("---------- MENU PISO ----------");
         System.out.println("1.Agregar Piso");
         System.out.println("2.Mostrar Pisos");
         System.out.println("3.Modificar Estado de Piso");
@@ -96,7 +96,7 @@ public class Menu {
     }
 
     private void menuReservacion() {
-        System.out.println("---------- Menu Reservacion ----------");
+        System.out.println("---------- MENU RESERVACION ----------");
         System.out.println("1.Hacer nueva reservacion");
         System.out.println("2.Verificar reservacion de un cliente");
         System.out.println("3.Mostrar Reservaciones");
@@ -358,7 +358,7 @@ public class Menu {
                         iniciarHabitacion();
                         break;
                 }
-            } catch (InputMismatchException hollis) {
+            } catch (InputMismatchException e) {
                 System.err.println("INGRESE UN NUMERO, NO UN CARACTER");
                 leer.next();
                 iniciarHabitacion();
