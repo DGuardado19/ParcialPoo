@@ -374,7 +374,7 @@ public class Menu {
                         int opr;
                         String acc;
 
-                        System.out.println("Ingrese la posicion donde agregara el acceso: ");
+                        System.out.println("Ingrese el codigo del paquete: ");
                         opr = entra.nextInt();
                         System.out.println("Ingrese el acceso nuevo: ");
                         acc = entra.next();
@@ -386,7 +386,7 @@ public class Menu {
                         iniciar();
                         break;
                     default:
-                        System.out.println("INGRESE UN NUMERO");
+                        System.err.println("INGRESE UN NUMERO");
                         iniciarPaquete();
                         break;
 
