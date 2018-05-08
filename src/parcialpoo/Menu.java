@@ -1,8 +1,6 @@
 package parcialpoo;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.InputMismatchException;
+import java.util.*;
 
 /**
  *
@@ -32,24 +30,7 @@ public class Menu {
                     iniciarCliente();
                     break;
                 case 2:
-                    Reservacion reservar = Reservacion.getInstance();
-                    String dui;
-                    int dia;
-                    System.out.print("Ingrese los dias de estadia: ");
-                    dia = leer.nextInt();
-
-                    if (dia <= 7) {
-                        System.out.print("Ingrese el dui del cliente: ");
-                        dui = leer.next();
-
-                        reservar.AgregarReservacion(dui, dia);
-                        reservar.mostrar();
-
-                        iniciar();
-                    } else {
-                        System.err.println("No se puede reservar mas de 7 dias!!!");
-                        iniciar();
-                    }
+                    iniciarReservacion();
                     break;
                 case 3:
                     iniciarPaquete();
@@ -117,16 +98,70 @@ public class Menu {
     private void menuReservacion() {
         System.out.println("---------- Menu Reservacion ----------");
         System.out.println("1.Hacer nueva reservacion");
-        System.out.println("2.Mostrar Reservaciones");
-        System.out.println("3.Regresar");
+        System.out.println("2.Verificar reservacion de un cliente");
+        System.out.println("3.Mostrar Reservaciones");
+        System.out.println("4.Regresar");
         System.out.print("Opcion: ");
     }
 
     public void iniciarReservacion() {
-        int opc = 4;
+        int opc = 5;
         Scanner leer = new Scanner(System.in);
-        while (opc != 3) {
 
+        while (opc != 4) {
+            Reservacion reservar = Reservacion.getInstance();
+            menuReservacion();
+            opc = leer.nextInt();
+
+            try {
+                switch (opc) {
+                    case 1:
+                        String dui;
+                        int dia;
+                        System.out.println("");
+                        System.out.print("Ingrese los dias de estadia: ");
+                        dia = leer.nextInt();
+
+                        if (dia <= 7) {
+                            System.out.print("Ingrese el dui del cliente: ");
+                            dui = leer.next();
+
+                            reservar.AgregarReservacion(dui, dia);
+                            
+                            iniciar();
+                        } else {
+                            System.err.println("No se puede reservar mas de 7 dias!!!");
+                            iniciar();
+                        }
+                        break;
+                    case 2:
+                        String duiC;
+                        System.out.println("");
+                        System.out.print("Ingrese el dui del cliente: ");
+                        duiC = leer.next();
+                        
+                        if(!reservar.verificarReservacion(duiC)){
+                            System.err.println("No existe tal reservacion!!!");
+                            iniciar();
+                        }
+                        break;
+                    case 3:
+                        System.out.println("");
+                        reservar.mostrar();
+                        System.out.println("");
+                        break;
+                    case 4:
+                        System.out.println("");
+                        iniciar();
+                        break;
+                    default:
+                        System.err.println("INGRESE UNA OPCION VALIDA!!!!");
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("INGRESE UN NUMERO, NO UN CARACTER");
+                leer.next();
+                iniciarReservacion();
+            }
         }
     }
 
@@ -176,7 +211,7 @@ public class Menu {
                         break;
                 }
 
-            } catch (InputMismatchException hollis) {
+            } catch (InputMismatchException e) {
                 System.err.println("INGRESE UN NUMERO, NO UN CARACTER");
                 input.next();
                 iniciarCliente();
@@ -398,5 +433,63 @@ public class Menu {
             }
 
         }
+    }
+    
+    public void ingresarDatosPorDefecto(){
+        Piso piso = Piso.getInstance();
+        Habitacion habit = Habitacion.getInstance();
+        Paquete paquete = Paquete.getInstance();
+        Cliente client = Cliente.getInstance();
+        
+        piso.agregarPiso("A");
+        piso.agregarPiso("B");
+        piso.agregarPiso("C");
+        piso.agregarPiso("D");
+        piso.agregarPiso("E");
+        piso.agregarPiso("F");
+        piso.agregarPiso("G");
+        
+        habit.agregarHabitacion(1, 20, "A", 1);
+        habit.agregarHabitacion(2, 38, "A", 1);
+        habit.agregarHabitacion(1, 20, "B", 1);
+        habit.agregarHabitacion(2, 38, "B", 2);
+        habit.agregarHabitacion(1, 20, "C", 1);
+        habit.agregarHabitacion(2, 38, "C", 1);
+        habit.agregarHabitacion(1, 20, "D", 3);
+        habit.agregarHabitacion(2, 38, "D", 1);
+        habit.agregarHabitacion(1, 20, "E", 1);
+        habit.agregarHabitacion(2, 38, "E", 2);
+        habit.agregarHabitacion(1, 20, "F", 1);
+        habit.agregarHabitacion(2, 38, "F", 1);
+        habit.agregarHabitacion(1, 20, "G", 3);
+        habit.agregarHabitacion(2, 38, "G", 1);
+        
+        
+        Paquete paque2 = new Paquete();
+        paque2.setNombre("Basico");
+        paque2.setPrecio(23);
+        ArrayList<String> aux = new ArrayList<String>();
+        aux.add("Internet");
+        paque2.setServicio(aux);
+        paquete.paque.add(paque2);
+        
+        Paquete paque3 = new Paquete();
+        paque3.setNombre("Premium");
+        paque3.setPrecio(50);
+        ArrayList<String> aux2 = new ArrayList<String>();
+        aux2.add("Internet");
+        aux2.add("TV");
+        aux2.add("Discoteca");
+        paque3.setServicio(aux2);
+        paquete.paque.add(paque3);
+        
+        client.setNombre("Mauricio");
+        client.setApellidos("Sanchez");
+        client.setGenero("Masculino");
+        client.setDireccion("Colonia las mercedez");
+        client.setTargetacredito("22344234");
+        client.setTelefono("72245676");
+        client.setDui("056120044");
+        client.clientes.add(client);
     }
 }

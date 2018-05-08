@@ -1,7 +1,6 @@
 package parcialpoo;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  *
@@ -48,6 +47,7 @@ public class Piso {
         piso.setEstado("Habilitado");
         piso.setLetra(letra);
         Piso.add(piso);
+        ordenarLista();
     }
 
     public void modificarPisoEstado(String Lpiso, int Estado) {
@@ -100,14 +100,29 @@ public class Piso {
     }
 
     public void mostrarPiso() {
-        System.out.println("------------Pisos--------------");
         int cont = 1;
+       
+        System.out.println("------------Pisos--------------");
         
-        for (Piso recorrer : Piso) {
+        for (Piso recorrer : Piso) {            
             System.out.print(cont + " - ");
             System.out.print(recorrer.getLetra() + " - ");
             System.out.println(recorrer.getEstado() + "\n");
             ++cont;
+        }
+    }
+    
+    public void ordenarLista(){
+        Piso aux1;
+        
+        for(int i = 0; i < Piso.size(); i++){
+            for(int x = 0; x < Piso.size(); x++){
+                if(Piso.get(x).getLetra().hashCode() > Piso.get(i).getLetra().hashCode()){
+                    aux1 = Piso.get(i);
+                    Piso.set(i, Piso.get(x)); 
+                    Piso.set(x, aux1); 
+                }
+            }            
         }
     }
 

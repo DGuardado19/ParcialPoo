@@ -19,40 +19,7 @@ public class main {
     
     public static void main(String[] args) {
         Menu menu = new Menu();
-        
-        Piso piso = Piso.getInstance();
-        Habitacion habit = Habitacion.getInstance();
-        Paquete paquete = Paquete.getInstance();
-        Cliente client = Cliente.getInstance();
-        
-        piso.agregarPiso("A");
-        piso.agregarPiso("B");
-        piso.agregarPiso("C");
-        piso.agregarPiso("D");
-        piso.agregarPiso("E");
-        
-        habit.agregarHabitacion(2, 30, "A", 1);
-        habit.agregarHabitacion(1, 24, "A", 2);
-        habit.agregarHabitacion(4, 50, "A", 1);
-        habit.agregarHabitacion(4, 50, "B", 1);
-        
-        Paquete paque2 = new Paquete();
-        paque2.setNombre("Basico");
-        paque2.setPrecio(23);
-        ArrayList<String> aux = new ArrayList<String>();
-        aux.add("Internet");
-        paque2.setServicio(aux);
-        paquete.paque.add(paque2);
-        
-        client.setNombre("Eduardo");
-        client.setApellidos("Alberto");
-        client.setGenero("Masculino");
-        client.setDireccion("erwrwer");
-        client.setTargetacredito("234234");
-        client.setTelefono("wererwe");
-        client.setDui("056120044");
-        client.clientes.add(client);
-        
+        menu.ingresarDatosPorDefecto();
         menu.iniciar();
     }
 

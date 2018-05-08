@@ -109,7 +109,6 @@ public class Paquete {
     public void mostrar() {
         int cont = 1;
         for (Paquete correr : paque) {
-            System.out.println("Paquete numero: " + cont);
             System.out.println("------------------------------");
             System.out.println("Codigo del paquete: " + cont);
             System.out.println("Nombre al paquete: " + correr.getNombre());
